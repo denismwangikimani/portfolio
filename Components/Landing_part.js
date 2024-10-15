@@ -1,37 +1,58 @@
-import React from "react";
-import { Code, Database, Globe, Cpu } from "lucide-react";
+"use client";
 
-const LandingPart = () => {
+import React from "react";
+import { Slash } from "lucide-react";
+
+const LandingPage = () => {
   return (
-    <div className="relative h-screen w-full bg-gray-100 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <Code className="absolute top-10 left-10 w-20 h-20" />
-        <Database className="absolute bottom-10 right-10 w-20 h-20" />
-        <Globe className="absolute top-1/2 left-1/4 w-16 h-16" />
-        <Cpu className="absolute bottom-1/4 right-1/3 w-24 h-24" />
+    <div className="relative h-screen w-full bg-white overflow-hidden font-handwritten flex justify-center items-center">
+      <style jsx global>{`
+        @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+        .font-handwritten {
+          font-family: "Permanent Marker", cursive;
+        }
+      `}</style>
+
+      {/* Top Left Corner Slash and Number */}
+      <div className="absolute top-44 left-48 flex items-center">
+        <Slash className="w-6 h-6 text-red-500" />
+        <span className="ml-1 text-sm">{24}</span>
       </div>
 
-      {/* Main content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="bg-black text-white p-4 transform -skew-x-12">
-          <div className="flex space-x-4 mb-2 text-xs">
-            <span>FRONTEND</span>
-            <span>BACKEND</span>
-            <span>DATABASE</span>
-            <span>DEVOPS</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none mb-2">
-            FULL STACK
-          </h1>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-none">
-            SOFTWARE DEVELOPER
-          </h2>
-          <div className="mt-2 text-right text-sm">BY [YOUR NAME]</div>
+      {/* Main FullStack Text */}
+      <div className="text-center">
+        <h1 className="text-8xl tracking-wider flex items-center justify-center">
+          FULL
+          {/* "STACK" with red box */}
+          <span className="relative">
+            <svg
+              className="absolute -top-1 -left-1 w-full h-full"
+              viewBox="0 0 350 100"
+            >
+              <rect
+                x="0"
+                y="0"
+                width="350"
+                height="100"
+                fill="none"
+                stroke="black"
+                strokeWidth="10"
+                strokeDasharray="5,5"
+              />
+            </svg>
+            <span className="relative z-10 ">STACK</span>
+          </span>
+        </h1>
+
+        {/* SOFTWARE and DEVELOPER */}
+        <div className="mt-4 flex justify-center items-center gap-8">
+          <span className="text-xl">SOFTWARE DEVELOPER</span>
+          <span className="text-xl flex items-center">
+          </span>
         </div>
       </div>
     </div>
   );
 };
 
-export default LandingPart;
+export default LandingPage;
