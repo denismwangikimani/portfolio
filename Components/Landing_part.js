@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Slash } from "lucide-react";
+//import Image from "next/image";
 
 const LandingPage = () => {
   return (
@@ -47,8 +48,7 @@ const LandingPage = () => {
         {/* SOFTWARE and DEVELOPER */}
         <div className="mt-4 flex justify-center items-center gap-8">
           <span className="text-xl">SOFTWARE DEVELOPER</span>
-          <span className="text-xl flex items-center">
-          </span>
+          <span className="text-xl flex items-center"></span>
         </div>
       </div>
     </div>
