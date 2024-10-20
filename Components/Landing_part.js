@@ -31,31 +31,12 @@ const LandingPage = () => {
         {/* Main FullStack Text */}
         <div className="text-center">
           <h1 className="text-8xl tracking-wider flex items-center justify-center">
-            FULL
-            {/* "STACK" with red box */}
-            <span className="relative">
-              <svg
-                className="absolute -top-1 -left-1 w-full h-full"
-                viewBox="0 0 350 100"
-              >
-                <rect
-                  x="0"
-                  y="0"
-                  width="350"
-                  height="100"
-                  fill="none"
-                  stroke="black"
-                  strokeWidth="10"
-                  strokeDasharray="5,5"
-                />
-              </svg>
-              <span className="relative z-10">STACK</span>
-            </span>
+            DENIS MWANGI
           </h1>
 
           {/* SOFTWARE and DEVELOPER */}
           <div className="mt-4 flex justify-center items-center gap-8">
-            <span className="text-xl">SOFTWARE DEVELOPER</span>
+            <span className="text-xl">FULLSTACK SOFTWARE DEVELOPER</span>
             <span className="text-xl flex items-center"></span>
           </div>
         </div>
