@@ -52,9 +52,8 @@ const AboutMe = () => {
               <Image
                 src="/images/profile.jpg"
                 alt="Profile"
-                layout="fill"
-                objectFit="cover"
-                className="grayscale"
+                fill
+                className="object-cover grayscale"
               />
             </div>
           </div>
