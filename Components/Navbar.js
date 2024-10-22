@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <nav className="w-full py-10 px-10 flex justify-between items-center bg-transparent">
       {/* Left side: Name */}
-      <span className="text-xl font-bold">Denis Mwangi</span>
+      <span className="text-xl font-bold">Denis</span>
 
       {/* Right side: Desktop Navigation */}
       <div className="hidden md:flex">

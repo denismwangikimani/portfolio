@@ -9,7 +9,7 @@ const Blog = () => {
   const [error, setError] = useState(null);
 
   // Your Medium username here
-  const MEDIUM_USERNAME = "deniskimani";
+  const MEDIUM_USERNAME = "denismwangi";
   // Using a CORS proxy to avoid CORS issues
   const RSS_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${MEDIUM_USERNAME}`;
 

@@ -48,7 +48,9 @@ const Work = () => {
 
             {/* Absolutely positioned text overlay */}
             <div className="absolute top-72 left-0 right-0 text-center space-y-4">
-              <h2 className="text-5xl mb-4 font-bold">HOW BAZAAR</h2>
+              <h2 className="text-5xl mb-4 font-bold inline-block bg-black text-white px-3 py-1">
+                HOW BAZAAR
+              </h2>
               <p className="text-lg max-w-md mx-auto">
                 Iconic moments from our archives revisited. This month: the
                 creative journey of Project Three captures the innovative spirit
