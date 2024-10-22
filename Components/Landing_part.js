@@ -21,23 +21,24 @@ const LandingPage = () => {
       </div>
 
       {/* Top Left Corner Slash and Number */}
-      <div className="absolute top-44 left-48 flex items-center pt-40">
-        <Slash className="w-6 h-6 text-red-500" />
-        <span className="ml-1 text-sm">{24}</span>
+      <div className="absolute top-20 left-6 sm:top-44 sm:left-48 flex items-center pt-20 sm:pt-40">
+        <Slash className="w-4 h-4 sm:w-6 sm:h-6 text-red-500" />
+        <span className="ml-1 text-xs sm:text-sm">{24}</span>
       </div>
 
       {/* Main Content Container */}
-      <div className="h-full w-full flex justify-center items-center pt-52">
-        {/* Main FullStack Text */}
-        <div className="text-center">
-          <h1 className="text-8xl tracking-wider flex items-center justify-center">
+      <div className="h-full w-full flex justify-center items-center pt-32 sm:pt-52">
+        {/* Main Content */}
+        <div className="text-center px-4 sm:px-0">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-wider flex items-center justify-center">
             DENIS MWANGI
           </h1>
 
           {/* SOFTWARE and DEVELOPER */}
-          <div className="mt-4 flex justify-center items-center gap-8">
-            <span className="text-xl">FULLSTACK SOFTWARE DEVELOPER</span>
-            <span className="text-xl flex items-center"></span>
+          <div className="mt-4 flex justify-center items-center gap-4 sm:gap-8">
+            <span className="text-sm sm:text-lg md:text-xl">
+              FULLSTACK SOFTWARE DEVELOPER
+            </span>
           </div>
         </div>
       </div>
