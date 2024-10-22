@@ -15,6 +15,7 @@ const Footer = () => {
   return (
     <footer className="h-screen w-full flex items-center">
       <div className="w-full max-w-7xl mx-auto px-12 md:px-24 flex flex-col md:flex-row md:justify-between items-center md:items-start">
+        {/* Left Section */}
         <div className="flex flex-col items-start">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-handwritten text-center md:text-left mb-2">
             Let&apos;s connect
@@ -22,10 +23,15 @@ const Footer = () => {
           <span className="text-5xl md:text-7xl lg:text-8xl font-handwritten text-center md:text-left mb-8">
             digitally
           </span>
-          <span className="text-sm mt-8">© 2024 Denis Mwangi</span>
+
+          {/* On larger screens, the © text stays below 'digitally' */}
+          <span className="hidden md:block text-sm mt-8">
+            © 2024 Denis Mwangi
+          </span>
         </div>
 
-        <div className="flex flex-col gap-8 items-center md:items-start mt-8 md:mt-0">
+        {/* Right Section - Links */}
+        <div className="flex flex-col gap-8 items-center md:items-start mt-8 md:mt-0 md:ml-8">
           {links.map((link) => (
             <a
               key={link.name}
@@ -43,8 +49,22 @@ const Footer = () => {
               {link.name}
             </a>
           ))}
+
+          {/* On mobile, this moves below the links */}
+          <span className="block md:hidden text-sm mt-8">
+            © 2024 Denis Mwangi
+          </span>
         </div>
       </div>
+
+      {/* Spacing adjustments for iPad screens */}
+      <style jsx>{`
+        @media (min-width: 768px) and (max-width: 1024px) {
+          footer {
+            padding-top: 20px;
+          }
+        }
+      `}</style>
     </footer>
   );
 };

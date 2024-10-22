@@ -8,9 +8,7 @@ const Blog = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Your Medium username here
   const MEDIUM_USERNAME = "denismwangi";
-  // Using a CORS proxy to avoid CORS issues
   const RSS_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${MEDIUM_USERNAME}`;
 
   useEffect(() => {
@@ -21,13 +19,11 @@ const Blog = () => {
 
         const data = await response.json();
         if (data.status === "ok") {
-          // Process only the first 3 posts
           const processedPosts = data.items.slice(0, 3).map((item) => {
-            // Extract image from content if thumbnail is not available
             let imageUrl = item.thumbnail;
             if (!imageUrl || imageUrl === "") {
               const imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
-              imageUrl = imgMatch ? imgMatch[1] : "/placeholder.png"; // Using placeholder image
+              imageUrl = imgMatch ? imgMatch[1] : "/placeholder.png";
             }
 
             return {
@@ -84,7 +80,7 @@ const Blog = () => {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4">
+    <section className="max-w-6xl mx-auto px-6 md:px-8">
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
         .font-handwritten {
@@ -92,15 +88,15 @@ const Blog = () => {
         }
       `}</style>
 
-      {/* Header Text with large space */}
-      <div className="text-center my-60">
-        <h2 className="font-handwritten text-4xl font-bold mb-8">
+      {/* Header Text with adjusted spacing */}
+      <div className="text-center my-20 md:my-40">
+        <h2 className="font-handwritten text-2xl md:text-3xl lg:text-4xl font-bold mb-8 px-4">
           Occasionally, I blog about my journey and lessons learned.
         </h2>
       </div>
 
-      {/* Blog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Blog Grid with improved spacing */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
         {posts.map((post, index) => (
           <a
             key={index}
@@ -109,27 +105,27 @@ const Blog = () => {
             rel="noopener noreferrer"
             className="group block"
           >
-            <article className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2">
+            <article className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 max-w-sm mx-auto w-full">
               <div className="relative aspect-video">
                 <Image
                   src={post.image}
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
                   priority={index === 0}
                   onError={(e) => {
                     e.target.src = "/placeholder.png";
                   }}
                 />
               </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2 font-handwritten">
+              <div className="p-4 md:p-6">
+                <div className="flex items-center text-xs md:text-sm text-gray-500 mb-2 font-handwritten">
                   <span>{post.date}</span>
                   <span className="mx-2">•</span>
                   <span>{post.readTime}</span>
                 </div>
-                <h3 className="text-lg font-handwritten group-hover:text-blue-600 transition-colors">
+                <h3 className="text-base md:text-lg font-handwritten group-hover:text-blue-600 transition-colors">
                   {post.title}
                 </h3>
               </div>
