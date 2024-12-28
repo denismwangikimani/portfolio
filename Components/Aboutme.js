@@ -14,7 +14,7 @@ const AboutMe = () => {
           <span className="text-7xl sm:text-8xl md:text-9xl lg:text-10xl">
             LO
           </span>
-          <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+          <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-yellow-400">
             !
           </span>
         </h1>
@@ -23,7 +23,7 @@ const AboutMe = () => {
           <div className="flex items-start gap-4 flex-col sm:flex-row">
             <div className="flex-1">
               <div className="relative ml-2 sm:ml-6">
-                <MousePointer className="absolute -left-8 sm:-left-12 top-6 sm:top-8 w-6 h-6 sm:w-8 sm:h-8 transform rotate-90" />
+                <MousePointer className="absolute -left-8 sm:-left-12 top-6 sm:top-8 w-6 h-6 sm:w-8 sm:h-8 transform rotate-90 font-handwritten" />
                 <Link
                   href="#"
                   style={{ whiteSpace: "nowrap" }}

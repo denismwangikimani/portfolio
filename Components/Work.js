@@ -3,6 +3,32 @@
 import React from "react";
 import Link from "next/link";
 
+const CircledText = ({ children }) => {
+  return (
+    <div className="relative inline-block">
+      <style jsx>{`
+        .circle-highlight {
+          position: relative;
+          background-color: transparent;
+        }
+        .circle-highlight:after {
+          border: 6px solid #fde047;
+          border-top: 6px solid #fde047;
+          border-radius: 1.5em 1em 2em 1.5em;
+          bottom: -0.3em;
+          content: "";
+          left: -0.3em;
+          position: absolute;
+          right: -0.3em;
+          top: -0.1em;
+        }
+      `}</style>
+      <span className="circle-highlight">{children}</span>
+    </div>
+  );
+};
+
+// Example usage in your Work component
 const Work = () => {
   return (
     <div className="max-w-6xl mx-auto p-4 lg:p-8 font-handwritten">
@@ -12,9 +38,10 @@ const Work = () => {
           font-family: "Permanent Marker", cursive;
         }
       `}</style>
+
       <div className="relative">
         <h1 className="text-2xl lg:text-4xl mb-8 lg:mb-12 font-bold">
-          SELECTED WORK
+          <CircledText>SELECTED WORK</CircledText>
         </h1>
 
         <div className="grid grid-cols-12 gap-4 lg:gap-8">

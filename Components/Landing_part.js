@@ -38,7 +38,7 @@ const LandingPage = () => {
               </SprayPaintText>
             </div>
             
-            <p className="text-black text-[3vw] mt-4 font-medium tracking-tight">
+            <p className="text-black text-[3vw] mt-4 font-medium font-handwritten tracking-tight">
               FULL STACK DEVELOPER
             </p>
           </div>
