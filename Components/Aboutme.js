@@ -25,7 +25,7 @@ const AboutMe = () => {
               <div className="relative ml-2 sm:ml-6">
                 <MousePointer className="absolute -left-8 sm:-left-12 top-6 sm:top-8 w-6 h-6 sm:w-8 sm:h-8 transform rotate-90 font-handwritten" />
                 <Link
-                  href="#"
+                  href="/about"
                   style={{ whiteSpace: "nowrap" }}
                   className="text-2xl sm:text-3xl md:text-4xl inline-block bg-black text-white px-2 sm:px-3 py-1 hover:underline cursor-pointer"
                 >
