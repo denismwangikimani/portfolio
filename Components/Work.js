@@ -55,7 +55,7 @@ const Work = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-7 flex justify-between space-x-4 lg:space-x-8">
-            <Link href="">
+            <Link href="/project1">
               <div className="bg-gray-300 w-40 lg:w-80 mt-20 lg:mt-40 h-40 lg:h-56 cursor-pointer" />
             </Link>
             <Link href="">
@@ -65,7 +65,7 @@ const Work = () => {
 
           {/* Middle Row */}
           <div className="col-span-12 lg:col-span-6 flex justify-between space-x-4 lg:space-x-0">
-            <Link href="" className="w-3/5 lg:w-full">
+            <Link href="/projects/2" className="w-3/5 lg:w-full">
               <div className="bg-gray-300 w-full h-64 lg:h-96 cursor-pointer" />
             </Link>
             <Link href="" className="w-2/5 lg:hidden">
