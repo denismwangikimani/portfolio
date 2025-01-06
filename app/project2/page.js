@@ -51,74 +51,16 @@ const ProjectPage = () => {
           </p>
         </section>
 
-        {/* Flow of Data and Processes */}
-        <section className="space-y-8 mb-16">
-          <h2 className="text-2xl md:text-3xl font-semibold">
-            Flow of Data and Processes
-          </h2>
-          <ul className="list-none space-y-4">
-            <li className="flex items-start space-x-2">
-              <span className="font-semibold">1. User Input Layer → Data Acquisition:</span>
-              <p className="text-gray-700">
-                Loads user-configured parameters and fetches real-time market
-                data via Binance API.
-              </p>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="font-semibold">2. Data Acquisition → Data Processing:</span>
-              <p className="text-gray-700">
-                Cleans and formats raw market data; calculates key technical
-                indicators.
-              </p>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="font-semibold">3. Data Processing → Decision Engine:</span>
-              <p className="text-gray-700">
-                Feeds processed data to the decision engine to execute
-                user-defined strategies.
-              </p>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="font-semibold">4. Decision Engine → Execution Layer:</span>
-              <p className="text-gray-700">
-                Issues secure trade commands (buy/sell/hold).
-              </p>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="font-semibold">5. Execution Layer → Logging and Analytics:</span>
-              <p className="text-gray-700">
-                Logs executed trades and analyzes performance for insights.
-              </p>
-            </li>
-            <li className="flex items-start space-x-2">
-              <span className="font-semibold">6. Error Handling:</span>
-              <p className="text-gray-700">
-                Detects and resolves issues across any module in real-time.
-              </p>
-            </li>
-          </ul>
-        </section>
-
         {/* Development Process */}
         <section className="space-y-8 mb-16">
           <h2 className="text-2xl md:text-3xl font-semibold">
             Development Process
           </h2>
-          <div
-            className="w-full rounded-lg flex items-center justify-center mb-6"
-            style={{
-              backgroundImage: "url('/images/crypto_bot_chart_flow.png')",
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              paddingBottom: "50%",
-            }}
-          ></div>
           <p className="text-lg md:text-xl leading-relaxed text-gray-700">
-            The bot was developed in Python, leveraging Binance API for real-time data
-            acquisition and pandas for analysis. It integrates multiple
-            technical indicators for precise decision-making and features a
-            modular architecture for easy strategy customization.
+            The bot was developed in Python, leveraging Binance API for
+            real-time data acquisition and pandas for analysis. It integrates
+            multiple technical indicators for precise decision-making and
+            features a modular architecture for easy strategy customization.
           </p>
         </section>
 
@@ -138,11 +80,102 @@ const ProjectPage = () => {
               .
             </li>
             <li>
-              Create a <code className="bg-gray-100 px-1 py-0.5 rounded">.env</code> file and
-              add Binance API credentials.
+              Create a{" "}
+              <code className="bg-gray-100 px-1 py-0.5 rounded">.env</code> file
+              and add Binance API credentials.
             </li>
-            <li>Run the bot using <code>python live_trading_mode.py</code>.</li>
+            <li>
+              Run the bot using <code>python live_trading_mode.py</code>.
+            </li>
           </ol>
+        </section>
+
+        {/* Flow of Data and Processes */}
+        <section className="space-y-8 mb-16">
+          <h2 className="text-2xl md:text-3xl font-semibold">
+            Flow of Data and Processes
+          </h2>
+          <div
+            className="w-full rounded-lg flex items-center justify-center"
+            style={{
+              backgroundImage: "url('/images/crypto_bot_chart_flow.png')",
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              paddingBottom: "50%",
+            }}
+          ></div>
+          <ul className="list-none space-y-4">
+            <li className="flex items-start space-x-2">
+              <span className="font-semibold">
+                1. User Input Layer → Data Acquisition:
+              </span>
+              <p className="text-gray-700">
+                Loads user-configured parameters and fetches real-time market
+                data via Binance API.
+              </p>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="font-semibold">
+                2. Data Acquisition → Data Processing:
+              </span>
+              <p className="text-gray-700">
+                Cleans and formats raw market data; calculates key technical
+                indicators.
+              </p>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="font-semibold">
+                3. Data Processing → Decision Engine:
+              </span>
+              <p className="text-gray-700">
+                Feeds processed data to the decision engine to execute
+                user-defined strategies.
+              </p>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="font-semibold">
+                4. Decision Engine → Execution Layer:
+              </span>
+              <p className="text-gray-700">
+                Issues secure trade commands (buy/sell/hold).
+              </p>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="font-semibold">
+                5. Execution Layer → Logging and Analytics:
+              </span>
+              <p className="text-gray-700">
+                Logs executed trades and analyzes performance for insights.
+              </p>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="font-semibold">6. Error Handling:</span>
+              <p className="text-gray-700">
+                Detects and resolves issues across any module in real-time.
+              </p>
+            </li>
+          </ul>
+        </section>
+
+        {/* Screenshots Section */}
+        {/* Project Screenshots */}
+        <section className="space-y-8 mb-16">
+          <h2 className="text-2xl md:text-3xl font-semibold">
+            App Screenshots
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className="w-full h-64 bg-gray-300 rounded-lg flex items-center justify-center"
+              >
+                <p className="text-center text-gray-600">
+                  Screenshot {index + 1}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Navigation to Next Project */}
