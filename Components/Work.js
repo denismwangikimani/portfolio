@@ -130,9 +130,9 @@ const Work = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-8 flex space-x-4 lg:space-x-8">
-            <Link href="">
+            <Link href="/project2">
               <ProjectBox 
-                color="bg-yellow-300" 
+                color="bg-red-300" 
                 width="w-24 lg:w-40" 
                 height="h-40 lg:h-52" 
               />
