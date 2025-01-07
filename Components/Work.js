@@ -73,7 +73,7 @@ const Work = () => {
                 marginTop="mt-20 lg:mt-40" 
               />
             </Link>
-            <Link href="">
+            <Link href="/audiojam-music">
               <ProjectBox 
                 color="bg-red-300" 
                 width="w-40 lg:w-64" 
