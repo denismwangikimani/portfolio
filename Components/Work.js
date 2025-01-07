@@ -65,7 +65,7 @@ const Work = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-7 flex justify-between space-x-4 lg:space-x-8">
-            <Link href="/project1">
+            <Link href="/notesapp">
               <ProjectBox 
                 color="bg-gray-300" 
                 width="w-40 lg:w-80" 
@@ -130,7 +130,7 @@ const Work = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-8 flex space-x-4 lg:space-x-8">
-            <Link href="/project2">
+            <Link href="/binance">
               <ProjectBox 
                 color="bg-red-300" 
                 width="w-24 lg:w-40" 
