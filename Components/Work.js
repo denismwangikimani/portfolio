@@ -84,7 +84,7 @@ const Work = () => {
 
           {/* Middle Row */}
           <div className="col-span-12 lg:col-span-6 flex justify-between space-x-4 lg:space-x-0">
-            <Link href="/projects/2" className="w-3/5 lg:w-full">
+            <Link href="/xyntra-web-bank-app" className="w-3/5 lg:w-full">
               <ProjectBox 
                 color="bg-orange-300" 
                 width="w-full" 
