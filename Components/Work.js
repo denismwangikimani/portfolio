@@ -91,7 +91,7 @@ const Work = () => {
                 height="h-64 lg:h-96" 
               />
             </Link>
-            <Link href="" className="w-2/5 lg:hidden">
+            <Link href="/" className="w-2/5 lg:hidden">
               <ProjectBox 
                 color="bg-purple-300" 
                 width="w-full" 
@@ -101,7 +101,7 @@ const Work = () => {
           </div>
 
           <div className="hidden lg:block lg:col-span-6 space-y-4 lg:space-y-8 relative">
-            <Link href="">
+            <Link href="/undead-purge-game">
               <ProjectBox 
                 color="bg-green-300" 
                 width="w-full" 
