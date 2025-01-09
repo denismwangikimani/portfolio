@@ -2,6 +2,14 @@
 import React from "react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import ScreenShotsSection from "@/Components/ScreenshotsSection";
+
+const undeadPurgeScreenshots = [
+  { src: "/images/undead-purge-screenshots/1.png", alt: "Screenshot 1" },
+  { src: "/images/undead-purge-screenshots/2.png", alt: "Screenshot 2" },
+  { src: "/images/undead-purge-screenshots/3.png", alt: "Screenshot 3" },
+  { src: "/images/undead-purge-screenshots/4.png", alt: "Screenshot 4" },
+];
 
 const UndeadPurgePage = () => {
   return (
@@ -10,6 +18,13 @@ const UndeadPurgePage = () => {
       <main className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl py-16 md:py-24">
         {/* Banner Section */}
         <section className="space-y-8 mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-center">
+            Undead Purge
+          </h1>
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-600">
+            An intense zombie survival FPS game set in a desert apocalypse. Built using Unity and C#, 
+            the game challenges you to survive waves of undead enemies.
+          </p>
           <video
             className="w-full h-auto rounded-lg shadow-md"
             src="/path-to-gameplay-video.mp4"
@@ -18,25 +33,18 @@ const UndeadPurgePage = () => {
             muted
             playsInline
           />
-          <h1 className="text-4xl md:text-5xl font-bold text-center">
-            Undead Purge
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-600">
-            An intense zombie survival FPS game set in a desert apocalypse. Built using Unity and C#, 
-            the game challenges you to survive waves of undead enemies.
-          </p>
         </section>
 
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
           <a
-            href="https://itch.io/undead-purge" // Replace with actual itch.io link
+            href="https://itch.io/undead-purge"
             className="text-blue-600 hover:underline text-lg"
           >
             Download on itch.io
           </a>
           <a
-            href="https://drive.google.com/path-to-project" // Replace with actual Google Drive link
+            href="https://drive.google.com/path-to-project" 
             className="text-blue-600 hover:underline text-lg block mt-4"
           >
             Project Files (Google Drive)
@@ -82,22 +90,13 @@ const UndeadPurgePage = () => {
         </section>
 
         {/* Screenshots Section */}
-        <section className="space-y-8 mb-16">
-          <h2 className="text-2xl md:text-3xl font-semibold">
-            Game Screenshots
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="w-full h-64 bg-gray-300 rounded-lg flex items-center justify-center"
-              >
-                <p className="text-center text-gray-600">
-                  Screenshot {index + 1}
-                </p>
-              </div>
-            ))}
-          </div>
+        <ScreenShotsSection screenshots={undeadPurgeScreenshots} />
+
+        {/* Navigation to Next Project */}
+        <section className="text-center">
+          <a href="/binance" className="text-blue-600 hover:underline text-lg">
+            Next Project: Binance Cryptocurrency Exchange Bot
+          </a>
         </section>
 
       </main>

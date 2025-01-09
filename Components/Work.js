@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Pin } from "lucide-react";
 
 const CircledText = ({ children }) => {
@@ -31,7 +32,9 @@ const CircledText = ({ children }) => {
 
 const ProjectBox = ({ color, width, height, marginTop = "" }) => {
   return (
-    <div className={`${color} ${width} ${height} ${marginTop} cursor-pointer relative`}>
+    <div
+      className={`${color} ${width} ${height} ${marginTop} cursor-pointer relative`}
+    >
       <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 -rotate-45">
         <Pin size={24} className="text-blue-600 fill-blue-200" />
       </div>
@@ -66,18 +69,20 @@ const Work = () => {
 
           <div className="col-span-12 lg:col-span-7 flex justify-between space-x-4 lg:space-x-8">
             <Link href="/notesapp">
-              <ProjectBox 
-                color="bg-gray-300" 
-                width="w-40 lg:w-80" 
-                height="h-40 lg:h-56" 
-                marginTop="mt-20 lg:mt-40" 
-              />
+              <div className="bg-red-300 w-40 lg:w-80 mt-20 lg:mt-40 h-40 lg:h-56 cursor-pointer" />
             </Link>
             <Link href="/audiojam-music">
-              <ProjectBox 
-                color="bg-red-300" 
-                width="w-40 lg:w-64" 
-                height="h-64 lg:h-96" 
+              <div
+                style={{
+                  backgroundImage: "url('/images/audiojam-images/landing.png')",
+                  backgroundSize: "contain",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  width: "10rem", // 40 * 0.25rem
+                  height: "10rem", // 40 * 0.25rem
+                  cursor: "pointer",
+                }}
+                className="lg:w-64 lg:h-96 mt-20 lg:mt-40"
               />
             </Link>
           </div>
@@ -85,29 +90,18 @@ const Work = () => {
           {/* Middle Row */}
           <div className="col-span-12 lg:col-span-6 flex justify-between space-x-4 lg:space-x-0">
             <Link href="/xyntra-web-bank-app" className="w-3/5 lg:w-full">
-              <ProjectBox 
-                color="bg-orange-300" 
-                width="w-full" 
-                height="h-64 lg:h-96" 
-              />
+              <div className="bg-yellow-300 w-full h-64 lg:h-96 cursor-pointer" />
             </Link>
-            <Link href="/" className="w-2/5 lg:hidden">
-              <ProjectBox 
-                color="bg-purple-300" 
-                width="w-full" 
-                height="h-48" 
-              />
+            <Link href="" className="w-2/5 lg:hidden">
+              <div className="bg-gray-300 w-full h-48 cursor-pointer" />
             </Link>
           </div>
 
           <div className="hidden lg:block lg:col-span-6 space-y-4 lg:space-y-8 relative">
-            <Link href="/undead-purge-game">
-              <ProjectBox 
-                color="bg-green-300" 
-                width="w-full" 
-                height="h-40 lg:h-64" 
-              />
+            <Link href="">
+              <div className="bg-pink-300 w-full h-40 lg:h-64 cursor-pointer" />
             </Link>
+            {/* Absolutely positioned text overlay */}
             <div className="absolute top-64 lg:top-72 left-0 right-0 text-center space-y-2 lg:space-y-4">
               <h2 className="text-3xl lg:text-5xl mb-2 lg:mb-4 font-bold inline-block bg-black text-white px-2 lg:px-3 py-1">
                 HOW BAZAAR
@@ -130,12 +124,8 @@ const Work = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-8 flex space-x-4 lg:space-x-8">
-            <Link href="/binance">
-              <ProjectBox 
-                color="bg-red-300" 
-                width="w-24 lg:w-40" 
-                height="h-40 lg:h-52" 
-              />
+            <Link href="">
+              <div className="bg-blue-300 w-24 lg:w-40 h-40 lg:h-52 cursor-pointer" />
             </Link>
           </div>
         </div>

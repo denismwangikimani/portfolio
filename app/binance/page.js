@@ -2,22 +2,22 @@
 import React from "react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import ScreenShotsSection from "@/Components/ScreenshotsSection";
 
-const ProjectPage = () => {
+const binanceScreenshots = [
+  { src: "/images/binance-screenshots/1.png", alt: "Screenshot 1" },
+  { src: "/images/binance-screenshots/2.png", alt: "Screenshot 2" },
+  { src: "/images/binance-screenshots/3.png", alt: "Screenshot 3" },
+  { src: "/images/binance-screenshots/4.png", alt: "Screenshot 4" },
+];
+
+const BinancePage = () => {
   return (
     <div className="min-h-screen bg-white text-black">
       <Navbar />
       <main className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl py-16 md:py-24">
         {/* Banner Section */}
         <section className="space-y-8 mb-16">
-          <video
-            className="w-full h-auto rounded-lg shadow-md"
-            src="/path-to-video.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
           <h1 className="text-4xl md:text-5xl font-bold text-center">
             Crypto Trading Bot
           </h1>
@@ -26,15 +26,29 @@ const ProjectPage = () => {
             market data and advanced technical indicators to execute secure and
             efficient trades.
           </p>
+          <video
+            className="w-full h-auto rounded-lg shadow-md"
+            src="/path-to-video.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
         </section>
 
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
           <a
-            href="https://github.com/denismwangikimani/crypto_trading_bot"
+            href="https://itch.io/undead-purge"
             className="text-blue-600 hover:underline text-lg"
           >
-            GitHub Repository
+            Download on itch.io
+          </a>
+          <a
+            href="https://drive.google.com/path-to-project" 
+            className="text-blue-600 hover:underline text-lg block mt-4"
+          >
+            Project Files (Google Drive)
           </a>
         </section>
 
@@ -159,28 +173,12 @@ const ProjectPage = () => {
         </section>
 
         {/* Project Screenshots */}
-        <section className="space-y-8 mb-16">
-          <h2 className="text-2xl md:text-3xl font-semibold">
-            App Screenshots
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="w-full h-64 bg-gray-300 rounded-lg flex items-center justify-center"
-              >
-                <p className="text-center text-gray-600">
-                  Screenshot {index + 1}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ScreenShotsSection screenshots={binanceScreenshots} />
 
         {/* Navigation to Next Project */}
         <section className="text-center">
-          <a href="/project3" className="text-blue-600 hover:underline text-lg">
-            Next Project
+          <a href="/audiojam-music" className="text-blue-600 hover:underline text-lg">
+            Next Project: AudioJam 
           </a>
         </section>
       </main>
@@ -189,4 +187,4 @@ const ProjectPage = () => {
   );
 };
 
-export default ProjectPage;
+export default BinancePage;

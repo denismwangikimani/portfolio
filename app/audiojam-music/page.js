@@ -2,6 +2,14 @@
 import React from "react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import ScreenShotsSection from "@/Components/ScreenshotsSection";
+
+const audioJamScreenshots = [
+  { src: "/images/audiojam-screenshots/1.png", alt: "Screenshot 1" },
+  { src: "/images/audiojam-screenshots/2.png", alt: "Screenshot 2" },
+  { src: "/images/audiojam-screenshots/3.png", alt: "Screenshot 3" },
+  { src: "/images/audiojam-screenshots/4.png", alt: "Screenshot 4" },
+];
 
 const AudioJamPage = () => {
   return (
@@ -10,6 +18,13 @@ const AudioJamPage = () => {
       <main className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl py-16 md:py-24">
         {/* Banner Section */}
         <section className="space-y-8 mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-center">
+            AudioJam Spotify Project
+          </h1>
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-600">
+            AudioJam Spotify is a web application integrating with the Spotify API 
+            to deliver a personalized and interactive music experience.
+          </p>
           <video
             className="w-full h-auto rounded-lg shadow-md"
             src="/videos/Audiojam-demo-video.mp4"
@@ -18,22 +33,21 @@ const AudioJamPage = () => {
             muted
             playsInline
           />
-          <h1 className="text-4xl md:text-5xl font-bold text-center">
-            AudioJam Spotify Project
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-600">
-            AudioJam Spotify is a web application integrating with the Spotify API 
-            to deliver a personalized and interactive music experience.
-          </p>
         </section>
 
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
           <a
-            href="https://github.com/yourusername/audiojam"
+            href="https://itch.io/undead-purge"
             className="text-blue-600 hover:underline text-lg"
           >
-            GitHub Repository
+            Download on itch.io
+          </a>
+          <a
+            href="https://drive.google.com/path-to-project" 
+            className="text-blue-600 hover:underline text-lg block mt-4"
+          >
+            Project Files (Google Drive)
           </a>
         </section>
 
@@ -79,22 +93,13 @@ const AudioJamPage = () => {
         </section>
 
         {/* Screenshots Section */}
-        <section className="space-y-8 mb-16">
-          <h2 className="text-2xl md:text-3xl font-semibold">
-            App Screenshots
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="w-full h-64 bg-gray-300 rounded-lg flex items-center justify-center"
-              >
-                <p className="text-center text-gray-600">
-                  Screenshot {index + 1}
-                </p>
-              </div>
-            ))}
-          </div>
+        <ScreenShotsSection screenshots={audioJamScreenshots} />
+
+        {/* Navigation to Next Project */}
+        <section className="text-center">
+          <a href="/notesapp" className="text-blue-600 hover:underline text-lg">
+            Next Project: Byte Notes App
+          </a>
         </section>
       </main>
       <Footer />
