@@ -5,10 +5,10 @@ import Footer from "@/Components/Footer";
 import ScreenShotsSection from "@/Components/ScreenshotsSection";
 
 const notesScreenshots = [
-  { src: "/images/notes-screenshots/1.png", alt: "Screenshot 1" },
-  { src: "/images/notes-screenshots/2.png", alt: "Screenshot 2" },
-  { src: "/images/notes-screenshots/3.png", alt: "Screenshot 3" },
-  { src: "/images/notes-screenshots/4.png", alt: "Screenshot 4" },
+  { src: "/images/notesapp-screenshots/login.png", alt: "Screenshot 1" },
+  { src: "/images/notesapp-screenshots/notes.png", alt: "Screenshot 2" },
+  { src: "/images/notesapp-screenshots/search.png", alt: "Screenshot 3" },
+  { src: "/images/notesapp-screenshots/empty.png", alt: "Screenshot 4" },
 ];
 
 const NotesPage = () => {
@@ -28,7 +28,7 @@ const NotesPage = () => {
           </p>
           <video
             className="w-full h-auto rounded-lg shadow-md"
-            src="/path-to-video.mp4"
+            src="/videos/bytes-notes-app-demo-video.mp4"
             autoPlay
             loop
             muted
