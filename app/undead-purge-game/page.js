@@ -5,10 +5,11 @@ import Footer from "@/Components/Footer";
 import ScreenShotsSection from "@/Components/ScreenshotsSection";
 
 const undeadPurgeScreenshots = [
-  { src: "/images/undead-purge-screenshots/1.png", alt: "Screenshot 1" },
-  { src: "/images/undead-purge-screenshots/2.png", alt: "Screenshot 2" },
-  { src: "/images/undead-purge-screenshots/3.png", alt: "Screenshot 3" },
-  { src: "/images/undead-purge-screenshots/4.png", alt: "Screenshot 4" },
+  { src: "/images/undead-purge-screenshots/login.png", alt: "Screenshot 1" },
+  { src: "/images/undead-purge-screenshots/env.png", alt: "Screenshot 2" },
+  { src: "/images/undead-purge-screenshots/weapons.png", alt: "Screenshot 3" },
+  { src: "/images/undead-purge-screenshots/zombies.png", alt: "Screenshot 4" },
+  { src: "/images/undead-purge-screenshots/wasted.png", alt: "Screenshot 4" },
 ];
 
 const UndeadPurgePage = () => {
@@ -27,7 +28,7 @@ const UndeadPurgePage = () => {
           </p>
           <video
             className="w-full h-auto rounded-lg shadow-md"
-            src="/path-to-gameplay-video.mp4"
+            src="/videos/Undead-Purge-Demo-Video.mp4"
             autoPlay
             loop
             muted
