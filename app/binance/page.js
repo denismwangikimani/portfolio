@@ -5,10 +5,7 @@ import Footer from "@/Components/Footer";
 import ScreenShotsSection from "@/Components/ScreenshotsSection";
 
 const binanceScreenshots = [
-  { src: "/images/binance-screenshots/1.png", alt: "Screenshot 1" },
-  { src: "/images/binance-screenshots/2.png", alt: "Screenshot 2" },
-  { src: "/images/binance-screenshots/3.png", alt: "Screenshot 3" },
-  { src: "/images/binance-screenshots/4.png", alt: "Screenshot 4" },
+  { src: "/images/crypto-bot-screenshots/bot.png", alt: "Screenshot 1" },
 ];
 
 const BinancePage = () => {
@@ -28,7 +25,7 @@ const BinancePage = () => {
           </p>
           <video
             className="w-full h-auto rounded-lg shadow-md"
-            src="/path-to-video.mp4"
+            src="/videos/crypto-bot-demo-video.mp4"
             autoPlay
             loop
             muted

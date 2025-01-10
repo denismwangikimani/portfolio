@@ -5,10 +5,11 @@ import Footer from "@/Components/Footer";
 import ScreenShotsSection from "@/Components/ScreenshotsSection";
 
 const audioJamScreenshots = [
-  { src: "/images/audiojam-screenshots/1.png", alt: "Screenshot 1" },
-  { src: "/images/audiojam-screenshots/2.png", alt: "Screenshot 2" },
-  { src: "/images/audiojam-screenshots/3.png", alt: "Screenshot 3" },
-  { src: "/images/audiojam-screenshots/4.png", alt: "Screenshot 4" },
+  { src: "/images/audiojam-screenshots/landing.png", alt: "Screenshot 1" },
+  { src: "/images/audiojam-screenshots/login.png", alt: "Screenshot 2" },
+  { src: "/images/audiojam-screenshots/billboard.png", alt: "Screenshot 3" },
+  { src: "/images/audiojam-screenshots/top.png", alt: "Screenshot 4" },
+  { src: "/images/audiojam-screenshots/roast.png", alt: "Screenshot 4" },
 ];
 
 const AudioJamPage = () => {
