@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Pin } from "lucide-react";
 
 const CircledText = ({ children }) => {
   return (
@@ -15,14 +14,10 @@ const CircledText = ({ children }) => {
         }
         .circle-highlight:after {
           border: 6px solid #fde047;
-          border-top: 6px solid #fde047;
-          border-radius: 1.5em 1em 2em 1.5em;
-          bottom: -0.3em;
+          border-radius: 1.5em;
           content: "";
-          left: -0.3em;
           position: absolute;
-          right: -0.3em;
-          top: -0.1em;
+          inset: -0.3em;
         }
       `}</style>
       <span className="circle-highlight">{children}</span>
@@ -30,19 +25,66 @@ const CircledText = ({ children }) => {
   );
 };
 
-const ProjectBox = ({ color, width, height, marginTop = "" }) => {
+const StickerProject = ({ href, imagePath, title }) => {
   return (
-    <div
-      className={`${color} ${width} ${height} ${marginTop} cursor-pointer relative`}
-    >
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 -rotate-45">
-        <Pin size={24} className="text-blue-600 fill-blue-200" />
+    <Link href={href}>
+      <div className="relative group">
+        <div className="absolute inset-0 bg-white rounded-lg transform rotate-2 transition-transform group-hover:rotate-3" />
+        <div className="relative w-40 h-48 lg:w-64 lg:h-80 overflow-hidden rounded-lg border-8 border-white shadow-lg transform transition-transform group-hover:scale-105 bg-cream">
+          {/* Image Container */}
+          <div className="relative w-full h-[70%] overflow-hidden">
+            <Image
+              src={imagePath}
+              alt={title}
+              fill
+              style={{ objectFit: 'cover' }}
+              className="rounded-sm"
+            />
+            {/* Sticker shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+          
+          {/* Title Container */}
+          <div className="h-[30%] flex items-center justify-center p-2 text-center">
+            <h3 className="font-handwritten text-base lg:text-xl text-gray-800">
+              {title}
+            </h3>
+          </div>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 const Work = () => {
+  const projects = [
+    { 
+      href: "/project-one", 
+      imagePath: "/images/profile.jpg",
+      title: "Notes App"
+    },
+    { 
+      href: "/project-two", 
+      imagePath: "/images/profile.jpg",
+      title: "Audio Jam"
+    },
+    { 
+      href: "/project-three", 
+      imagePath: "/images/profile.jpg",
+      title: "Xyntra Bank"
+    },
+    { 
+      href: "/project-four", 
+      imagePath: "/images/profile.jpg",
+      title: "Project Four"
+    },
+    { 
+      href: "/project-five", 
+      imagePath: "/images/profile.jpg",
+      title: "Project Five"
+    },
+  ];
+
   return (
     <div className="max-w-6xl mx-auto p-4 lg:p-8 font-handwritten">
       <style jsx global>{`
@@ -57,76 +99,23 @@ const Work = () => {
           <CircledText>SELECTED WORK</CircledText>
         </h1>
 
-        <div className="grid grid-cols-12 gap-4 lg:gap-8">
-          {/* Top Row */}
-          <div className="col-span-12 lg:col-span-5">
-            <p className="hidden lg:block text-sm italic mt-40 lg:mt-80">
-              Project One creative exploration, documented through various
-              mediums during summer 2023. A blend of traditional and
-              contemporary approaches.
-            </p>
+        {/* Sticker "X" Layout */}
+        <div className="flex flex-col items-center space-y-4 lg:space-y-8">
+          {/* Top Left and Top Right Stickers */}
+          <div className="flex justify-between w-full lg:max-w-4xl">
+            <StickerProject {...projects[0]} />
+            <StickerProject {...projects[1]} />
           </div>
 
-          <div className="col-span-12 lg:col-span-7 flex justify-between space-x-4 lg:space-x-8">
-            <Link href="/notesapp">
-              <div className="bg-red-300 w-40 lg:w-80 mt-20 lg:mt-40 h-40 lg:h-56 cursor-pointer" />
-            </Link>
-            <Link href="/audiojam-music">
-              <div
-                style={{
-                  backgroundImage: "url('/images/audiojam-images/landing.png')",
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  width: "10rem", // 40 * 0.25rem
-                  height: "10rem", // 40 * 0.25rem
-                  cursor: "pointer",
-                }}
-                className="lg:w-64 lg:h-96 mt-20 lg:mt-40"
-              />
-            </Link>
+          {/* Center Sticker */}
+          <div>
+            <StickerProject {...projects[2]} />
           </div>
 
-          {/* Middle Row */}
-          <div className="col-span-12 lg:col-span-6 flex justify-between space-x-4 lg:space-x-0">
-            <Link href="/xyntra-web-bank-app" className="w-3/5 lg:w-full">
-              <div className="bg-yellow-300 w-full h-64 lg:h-96 cursor-pointer" />
-            </Link>
-            <Link href="" className="w-2/5 lg:hidden">
-              <div className="bg-gray-300 w-full h-48 cursor-pointer" />
-            </Link>
-          </div>
-
-          <div className="hidden lg:block lg:col-span-6 space-y-4 lg:space-y-8 relative">
-            <Link href="">
-              <div className="bg-pink-300 w-full h-40 lg:h-64 cursor-pointer" />
-            </Link>
-            {/* Absolutely positioned text overlay */}
-            <div className="absolute top-64 lg:top-72 left-0 right-0 text-center space-y-2 lg:space-y-4">
-              <h2 className="text-3xl lg:text-5xl mb-2 lg:mb-4 font-bold inline-block bg-black text-white px-2 lg:px-3 py-1">
-                HOW BAZAAR
-              </h2>
-              <p className="text-xs lg:text-base max-w-sm mx-auto">
-                Iconic moments from our archives revisited. This month: the
-                creative journey of Project Three captures the innovative spirit
-                of modern design.
-              </p>
-              <p className="text-xs lg:text-base">By CREATIVE DIRECTOR</p>
-            </div>
-          </div>
-
-          {/* Bottom Row */}
-          <div className="col-span-12 lg:col-span-4">
-            <p className="hidden lg:block text-sm mb-4">
-              Above: Project Four exploring the boundaries of design in winter
-              2023. Right: Project Five studies at the studio from autumn 2023.
-            </p>
-          </div>
-
-          <div className="col-span-12 lg:col-span-8 flex space-x-4 lg:space-x-8">
-            <Link href="">
-              <div className="bg-blue-300 w-24 lg:w-40 h-40 lg:h-52 cursor-pointer" />
-            </Link>
+          {/* Bottom Left and Bottom Right Stickers */}
+          <div className="flex justify-between w-full lg:max-w-4xl">
+            <StickerProject {...projects[3]} />
+            <StickerProject {...projects[4]} />
           </div>
         </div>
       </div>
