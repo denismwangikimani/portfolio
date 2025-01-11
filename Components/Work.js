@@ -25,30 +25,43 @@ const CircledText = ({ children }) => {
   );
 };
 
-const StickerProject = ({ href, imagePath, title }) => {
+const PolaroidProject = ({ href, imagePath, title, rotation = "0", zIndex = 0, className = "" }) => {
   return (
     <Link href={href}>
-      <div className="relative group">
-        <div className="absolute inset-0 bg-white rounded-lg transform rotate-2 transition-transform group-hover:rotate-3" />
-        <div className="relative w-40 h-48 lg:w-64 lg:h-80 overflow-hidden rounded-lg border-8 border-white shadow-lg transform transition-transform group-hover:scale-105 bg-cream">
-          {/* Image Container */}
-          <div className="relative w-full h-[70%] overflow-hidden">
-            <Image
-              src={imagePath}
-              alt={title}
-              fill
-              style={{ objectFit: 'cover' }}
-              className="rounded-sm"
-            />
-            {/* Sticker shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          </div>
-          
-          {/* Title Container */}
-          <div className="h-[30%] flex items-center justify-center p-2 text-center">
-            <h3 className="font-handwritten text-base lg:text-xl text-gray-800">
-              {title}
-            </h3>
+      <div 
+        className={`absolute group ${className}`}
+        style={{ 
+          transform: `rotate(${rotation}deg)`,
+          zIndex: zIndex
+        }}
+      >
+        <div className="transform transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:-translate-y-2 group-hover:[z-index:50]">
+          {/* Tape - Moved inside transform container */}
+          <div 
+            className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 md:w-16 h-4 md:h-6 bg-[#fde047] rotate-3 rounded-sm shadow-sm" 
+            style={{
+              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.03) 5px, rgba(0,0,0,0.03) 10px)`
+            }}
+          />
+
+          {/* Polaroid Frame */}
+          <div className="w-32 md:w-48 lg:w-64 bg-[#FAFAFA] p-2 md:p-3 rounded-sm shadow-xl">
+            {/* Image Container */}
+            <div className="relative w-full aspect-square mb-2 md:mb-4 bg-black">
+              <Image
+                src={imagePath}
+                alt={title}
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            
+            {/* Title Container */}
+            <div className="text-center pb-1 md:pb-2">
+              <h3 className="font-handwritten text-xs md:text-sm lg:text-base text-gray-800">
+                {title}
+              </h3>
+            </div>
           </div>
         </div>
       </div>
@@ -58,31 +71,12 @@ const StickerProject = ({ href, imagePath, title }) => {
 
 const Work = () => {
   const projects = [
-    { 
-      href: "/project-one", 
-      imagePath: "/images/profile.jpg",
-      title: "Notes App"
-    },
-    { 
-      href: "/project-two", 
-      imagePath: "/images/profile.jpg",
-      title: "Audio Jam"
-    },
-    { 
-      href: "/project-three", 
-      imagePath: "/images/profile.jpg",
-      title: "Xyntra Bank"
-    },
-    { 
-      href: "/project-four", 
-      imagePath: "/images/profile.jpg",
-      title: "Project Four"
-    },
-    { 
-      href: "/project-five", 
-      imagePath: "/images/profile.jpg",
-      title: "Project Five"
-    },
+    { href: "/project-one", imagePath: "/images/profile.jpg", title: "Notes App" },
+    { href: "/project-two", imagePath: "/images/profile.jpg", title: "Audio Jam" },
+    { href: "/project-three", imagePath: "/images/profile.jpg", title: "Xyntra Bank" },
+    { href: "/project-four", imagePath: "/images/profile.jpg", title: "Project Four" },
+    { href: "/project-five", imagePath: "/images/profile.jpg", title: "Project Five" },
+    { href: "/project-six", imagePath: "/images/profile.jpg", title: "Project Six" }
   ];
 
   return (
@@ -99,24 +93,25 @@ const Work = () => {
           <CircledText>SELECTED WORK</CircledText>
         </h1>
 
-        {/* Sticker "X" Layout */}
-        <div className="flex flex-col items-center space-y-4 lg:space-y-8">
-          {/* Top Left and Top Right Stickers */}
-          <div className="flex justify-between w-full lg:max-w-4xl">
-            <StickerProject {...projects[0]} />
-            <StickerProject {...projects[1]} />
-          </div>
-
-          {/* Center Sticker */}
-          <div>
-            <StickerProject {...projects[2]} />
-          </div>
-
-          {/* Bottom Left and Bottom Right Stickers */}
-          <div className="flex justify-between w-full lg:max-w-4xl">
-            <StickerProject {...projects[3]} />
-            <StickerProject {...projects[4]} />
-          </div>
+        {/* Polaroid Layout Container */}
+        <div className="relative h-[600px] md:h-[800px] lg:h-[1000px] mx-auto max-w-4xl">
+          {/* Top Row */}
+          <PolaroidProject {...projects[0]} rotation="-6" zIndex="2" 
+            className="top-[0%] left-[12%] md:left-[15%]" />
+          <PolaroidProject {...projects[1]} rotation="4" zIndex="1" 
+            className="top-[0%] right-[12%] md:right-[15%]" />
+          
+          {/* Middle */}
+          <PolaroidProject {...projects[2]} rotation="-2" zIndex="3" 
+            className="top-[30%] left-[25%] md:left-[30%]" />
+          
+          {/* Bottom Row */}
+          <PolaroidProject {...projects[3]} rotation="5" zIndex="2" 
+            className="bottom-[5%] left-[8%] md:left-[5%]" />
+          <PolaroidProject {...projects[4]} rotation="-4" zIndex="4" 
+            className="bottom-[8%] left-[32%] md:left-[35%]" />
+          <PolaroidProject {...projects[5]} rotation="3" zIndex="1" 
+            className="bottom-[1%] right-[8%] md:right-[10%]" />
         </div>
       </div>
     </div>
