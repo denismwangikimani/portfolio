@@ -73,7 +73,7 @@ const Work = () => {
   const projects = [
     { href: "/notesapp", imagePath: "/images/notesapp-screenshots/login.png", title: "Bytes Notes App" },
     { href: "/audiojam-music", imagePath: "/images/audiojam-screenshots/landing.png", title: "Audio Jam" },
-    { href: "/xyntra-web-bank-app", imagePath: "/images/xyntra-screenshots/landing.png", title: "Xyntra Web Bank" },
+    { href: "/xyntra-web-bank-app", imagePath: "/images/xyntra-screenshots/landing2.png", title: "Xyntra Web Bank" },
     { href: "/binance", imagePath: "/images/crypto-bot-screenshots/bot.png", title: "Binance Crypto Trading Bot" },
     { href: "/undead-purge-game", imagePath: "/images/profile.jpg", title: "Undead Purge FPS Game" },
     { href: "/project-six", imagePath: "/images/profile.jpg", title: "Project Six" }
