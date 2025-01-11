@@ -52,7 +52,7 @@ const PolaroidProject = ({ href, imagePath, title, rotation = "0", zIndex = 0, c
                 src={imagePath}
                 alt={title}
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
             
@@ -71,11 +71,11 @@ const PolaroidProject = ({ href, imagePath, title, rotation = "0", zIndex = 0, c
 
 const Work = () => {
   const projects = [
-    { href: "/project-one", imagePath: "/images/profile.jpg", title: "Notes App" },
-    { href: "/project-two", imagePath: "/images/profile.jpg", title: "Audio Jam" },
-    { href: "/project-three", imagePath: "/images/profile.jpg", title: "Xyntra Bank" },
-    { href: "/project-four", imagePath: "/images/profile.jpg", title: "Project Four" },
-    { href: "/project-five", imagePath: "/images/profile.jpg", title: "Project Five" },
+    { href: "/notesapp", imagePath: "/images/notesapp-screenshots/login.png", title: "Bytes Notes App" },
+    { href: "/audiojam-music", imagePath: "/images/audiojam-screenshots/landing.png", title: "Audio Jam" },
+    { href: "/xyntra-web-bank-app", imagePath: "/images/xyntra-screenshots/landing.png", title: "Xyntra Web Bank" },
+    { href: "/binance", imagePath: "/images/crypto-bot-screenshots/bot.png", title: "Binance Crypto Trading Bot" },
+    { href: "/undead-purge-game", imagePath: "/images/profile.jpg", title: "Undead Purge FPS Game" },
     { href: "/project-six", imagePath: "/images/profile.jpg", title: "Project Six" }
   ];
 
