@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
+} from "../Components/ui/navigation-menu";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
