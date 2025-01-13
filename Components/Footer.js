@@ -26,7 +26,7 @@ const Footer = () => {
 
           {/* On larger screens, the © text stays below 'digitally' */}
           <span className="hidden md:block text-sm mt-8">
-            © 2024 Denis Mwangi
+            © 2025 Denis Mwangi
           </span>
         </div>
 

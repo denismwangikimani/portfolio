@@ -38,17 +38,17 @@ const NotesPage = () => {
 
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
-          <a
-            href="https://itch.io/undead-purge"
+        <a
+            href="https://new-bytes-notes-app.onrender.com/"
             className="text-blue-600 hover:underline text-lg"
           >
-            Download on itch.io
+            Live App
           </a>
           <a
-            href="https://drive.google.com/path-to-project" 
+            href="https://github.com/denismwangikimani/new-bytes-notes-app" 
             className="text-blue-600 hover:underline text-lg block mt-4"
           >
-            Project Files (Google Drive)
+            GitHub
           </a>
         </section>
 

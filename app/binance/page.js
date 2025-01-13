@@ -36,16 +36,10 @@ const BinancePage = () => {
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
           <a
-            href="https://itch.io/undead-purge"
-            className="text-blue-600 hover:underline text-lg"
-          >
-            Download on itch.io
-          </a>
-          <a
-            href="https://drive.google.com/path-to-project" 
+            href="https://github.com/denismwangikimani/crypto_trading_bot" 
             className="text-blue-600 hover:underline text-lg block mt-4"
           >
-            Project Files (Google Drive)
+            GitHub
           </a>
         </section>
 
@@ -174,8 +168,8 @@ const BinancePage = () => {
 
         {/* Navigation to Next Project */}
         <section className="text-center">
-          <a href="/audiojam-music" className="text-blue-600 hover:underline text-lg">
-            Next Project: AudioJam 
+          <a href="/undead-purge-game" className="text-blue-600 hover:underline text-lg">
+            Next Project: Undead Purge Game
           </a>
         </section>
       </main>

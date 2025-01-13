@@ -39,7 +39,7 @@ const UndeadPurgePage = () => {
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
           <a
-            href="https://itch.io/undead-purge"
+            href="https://deniskimani.itch.io/undead-purge"
             className="text-blue-600 hover:underline text-lg"
           >
             Download on itch.io

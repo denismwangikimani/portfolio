@@ -41,17 +41,17 @@ const XyntraWebBankPage = () => {
 
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
-          <a
-            href="https://itch.io/undead-purge"
+        <a
+            href="https://xyntra-web-bank-app.vercel.app/"
             className="text-blue-600 hover:underline text-lg"
           >
-            Download on itch.io
+            Live App
           </a>
           <a
-            href="https://drive.google.com/path-to-project" 
+            href="https://github.com/denismwangikimani/xyntra_web_bank_app" 
             className="text-blue-600 hover:underline text-lg block mt-4"
           >
-            Project Files (Google Drive)
+            GitHub
           </a>
         </section>
 
@@ -130,8 +130,8 @@ const XyntraWebBankPage = () => {
 
         {/* Navigation to Next Project */}
         <section className="text-center">
-          <a href="/undead-purge-game" className="text-blue-600 hover:underline text-lg">
-            Next Project: Undead Purge Game
+          <a href="/binance" className="text-blue-600 hover:underline text-lg">
+            Next Project: Binance Cryptocurrency Exchange Bot
           </a>
         </section>
       </main>
