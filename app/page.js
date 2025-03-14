@@ -4,6 +4,7 @@ import Work from "@/Components/Work";
 import Blog from "@/Components/Blog";
 import Footer from "@/Components/Footer";
 import React from "react";
+import "./globals.css";
 
 export default function Home() {
   return (
