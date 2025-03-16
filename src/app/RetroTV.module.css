@@ -1,0 +1,7 @@
+/* RetroTV.module.css */
+@font-face {
+  font-family: "Heading Pro";
+  src: url("https://manzdev.github.io/twitch-television/fonts/heading-pro.woff")
+    format("woff");
+  font-display: swap;
+}

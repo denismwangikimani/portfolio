@@ -1,5 +1,6 @@
 import PersonalTagCard from "@/components/Landing_part";
 import AboutMe from "@/components/AboutMe";
+import Work from "@/components/Work";
 
 export default function Home() {
   return (
@@ -9,6 +10,9 @@ export default function Home() {
       </section>
       <section id="about">
         <AboutMe />
+      </section>
+      <section id="work">
+        <Work />
       </section>
     </main>
   );
