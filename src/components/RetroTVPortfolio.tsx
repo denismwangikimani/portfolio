@@ -2,13 +2,16 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import TV from "./TV"; 
 
 const RetroTVPortfolio: React.FC = () => {
   const router = useRouter();
   const [hoveredTV, setHoveredTV] = useState<number | null>(null);
 
-  // Sample projects - replace with your actual projects
+  // Sample projects data structure
   const projects = [
+    // Top row (2 TVs)
     {
       id: 1,
       image: "/images/profile.jpg",
@@ -23,6 +26,7 @@ const RetroTVPortfolio: React.FC = () => {
       link: "/About",
       position: "top-right",
     },
+    // Middle row (2 TVs)
     {
       id: 3,
       image: "/images/profile.jpg",
@@ -37,6 +41,7 @@ const RetroTVPortfolio: React.FC = () => {
       link: "/About",
       position: "middle-right",
     },
+    // Bottom row (3 TVs)
     {
       id: 5,
       image: "/images/profile.jpg",
@@ -60,194 +65,94 @@ const RetroTVPortfolio: React.FC = () => {
     },
   ];
 
-  const handleTVClick = () => {
-    router.push("/About");
+  const handleTVClick = (link: string) => {
+    router.push(link);
   };
 
-  // Function to determine TV rotation based on position
-  const getTVRotation = (position: string) => {
-    if (position.includes("left")) return "-rotate-6";
-    if (position.includes("right")) return "rotate-6";
-    return "";
+  // Modified TV component that handles the media content
+  // Modified ProjectTV component that better integrates media with the TV screen
+  const ProjectTV: React.FC<{
+    project: (typeof projects)[0];
+  }> = ({ project }) => {
+    return (
+      <div
+        className="relative cursor-pointer"
+        onMouseEnter={() => setHoveredTV(project.id)}
+        onMouseLeave={() => setHoveredTV(null)}
+        onClick={() => handleTVClick(project.link)}
+      >
+        {/* First render the TV */}
+        <div className="relative">
+          <TV
+            screenContent={
+              hoveredTV === project.id ? (
+                <video
+                  className="w-full h-full object-cover rounded-[25px]"
+                  autoPlay
+                  muted
+                  loop
+                >
+                  <source src={project.video} type="video/mp4" />
+                </video>
+              ) : (
+                <Image
+                  src={project.image}
+                  alt={`Project ${project.id}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-[25px]"
+                />
+              )
+            }
+          />
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-white py-16 px-4">
-      {/* Top row - 2 TVs */}
-      <div className="flex justify-center mb-16">
-        <div className="flex flex-wrap gap-6 justify-center max-w-6xl">
+    <div className="w-full overflow-hidden">
+      {/* Stacked TV Grid: 3-2-2 from bottom to top */}
+      <div className="grid grid-cols-1 gap-0">
+        {/* Top row - 2 TVs */}
+        <div className="flex justify-start items-end gap-0">
           {projects
-            .filter((p) => p.position.startsWith("top"))
-            .map((project) => (
-              <div
-                key={project.id}
-                className={`relative cursor-pointer transform ${getTVRotation(
-                  project.position
-                )} hover:scale-105 transition-transform duration-300`}
-                onMouseEnter={() => setHoveredTV(project.id)}
-                onMouseLeave={() => setHoveredTV(null)}
-                onClick={handleTVClick}
-              >
-                <div className="television-container flex flex-col items-center z-[1]">
-                  <div className="television w-[250px] h-[200px] rounded-[25px] shadow-lg bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-center items-center z-[2]">
-                    <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner rounded-[15px] flex items-center justify-center overflow-hidden">
-                      <div className="television-screen-container border border-[#222] shadow-md rounded-[15px] w-[90%] h-[85%] overflow-hidden flex justify-center items-center">
-                        <div className="television-crt w-[99%] h-[95%] bg-[#111] shadow-md rounded-[15px] overflow-hidden flex justify-center items-center">
-                          <div className="television-screen bg-[#302d30] w-[95%] h-[95%] rounded-[15px] shadow-inner overflow-hidden relative">
-                            {hoveredTV === project.id ? (
-                              <video
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                muted
-                                loop
-                              >
-                                <source src={project.video} type="video/mp4" />
-                              </video>
-                            ) : (
-                              <img
-                                src={project.image}
-                                alt={`Project ${project.id}`}
-                                className="w-full h-full object-cover"
-                              />
-                            )}
-                            <div className="noise absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_bottom,transparent,#aaa4,#8881,#6664,#4445,#2228,#4443,transparent),repeating-linear-gradient(transparent_0_2px,rgba(37,36,41,0.3)_2px_4px)] animate-scanlines"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="television-base w-[200px] h-[15px] bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-between items-center shadow-md"></div>
-                  <div className="foot-container w-[70%] flex justify-between">
-                    <div className="foot left w-5 h-2.5 bg-[#b71a11] shadow-md"></div>
-                    <div className="foot right w-5 h-2.5 bg-[#b71a11] shadow-md"></div>
-                  </div>
-                </div>
+            .filter(p => p.position.startsWith("top"))
+            .map(project => (
+              <div key={project.id} className="w-1/3">
+                <ProjectTV project={project} />
+              </div>
+            ))}
+        </div>
+        
+        {/* Middle row - 2 TVs - increased negative margin */}
+        <div 
+          className="flex justify-start items-end gap-0"
+          style={{ marginTop: "-65px" }} // More negative margin
+        >
+          {projects
+            .filter(p => p.position.startsWith("middle"))
+            .map(project => (
+              <div key={project.id} className="w-1/3">
+                <ProjectTV project={project} />
+              </div>
+            ))}
+        </div>
+        
+        {/* Bottom row - 3 TVs - increased negative margin */}
+        <div 
+          className="flex justify-start items-end gap-0"
+          style={{ marginTop: "-65px" }} // More negative margin
+        >
+          {projects
+            .filter(p => p.position.startsWith("bottom"))
+            .map(project => (
+              <div key={project.id} className="w-1/3">
+                <ProjectTV project={project} />
               </div>
             ))}
         </div>
       </div>
-
-      {/* Middle row - 2 TVs */}
-      <div className="flex justify-center mb-16">
-        <div className="flex flex-wrap gap-6 justify-center max-w-6xl">
-          {projects
-            .filter((p) => p.position.startsWith("middle"))
-            .map((project) => (
-              <div
-                key={project.id}
-                className={`relative cursor-pointer transform ${getTVRotation(
-                  project.position
-                )} hover:scale-105 transition-transform duration-300`}
-                onMouseEnter={() => setHoveredTV(project.id)}
-                onMouseLeave={() => setHoveredTV(null)}
-                onClick={handleTVClick}
-              >
-                <div className="television-container flex flex-col items-center z-[1]">
-                  <div className="television w-[250px] h-[200px] rounded-[25px] shadow-lg bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-center items-center z-[2]">
-                    <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner rounded-[15px] flex items-center justify-center overflow-hidden">
-                      <div className="television-screen-container border border-[#222] shadow-md rounded-[15px] w-[90%] h-[85%] overflow-hidden flex justify-center items-center">
-                        <div className="television-crt w-[99%] h-[95%] bg-[#111] shadow-md rounded-[15px] overflow-hidden flex justify-center items-center">
-                          <div className="television-screen bg-[#302d30] w-[95%] h-[95%] rounded-[15px] shadow-inner overflow-hidden relative">
-                            {hoveredTV === project.id ? (
-                              <video
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                muted
-                                loop
-                              >
-                                <source src={project.video} type="video/mp4" />
-                              </video>
-                            ) : (
-                              <img
-                                src={project.image}
-                                alt={`Project ${project.id}`}
-                                className="w-full h-full object-cover"
-                              />
-                            )}
-                            <div className="noise absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_bottom,transparent,#aaa4,#8881,#6664,#4445,#2228,#4443,transparent),repeating-linear-gradient(transparent_0_2px,rgba(37,36,41,0.3)_2px_4px)] animate-scanlines"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="television-base w-[200px] h-[15px] bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-between items-center shadow-md"></div>
-                  <div className="foot-container w-[70%] flex justify-between">
-                    <div className="foot left w-5 h-2.5 bg-[#b71a11] shadow-md"></div>
-                    <div className="foot right w-5 h-2.5 bg-[#b71a11] shadow-md"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
-
-      {/* Bottom row - 3 TVs */}
-      <div className="flex justify-center">
-        <div className="flex flex-wrap gap-6 justify-center max-w-6xl">
-          {projects
-            .filter((p) => p.position.startsWith("bottom"))
-            .map((project) => (
-              <div
-                key={project.id}
-                className={`relative cursor-pointer transform ${getTVRotation(
-                  project.position
-                )} hover:scale-105 transition-transform duration-300`}
-                onMouseEnter={() => setHoveredTV(project.id)}
-                onMouseLeave={() => setHoveredTV(null)}
-                onClick={handleTVClick}
-              >
-                <div className="television-container flex flex-col items-center z-[1]">
-                  <div className="television w-[250px] h-[200px] rounded-[25px] shadow-lg bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-center items-center z-[2]">
-                    <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner rounded-[15px] flex items-center justify-center overflow-hidden">
-                      <div className="television-screen-container border border-[#222] shadow-md rounded-[15px] w-[90%] h-[85%] overflow-hidden flex justify-center items-center">
-                        <div className="television-crt w-[99%] h-[95%] bg-[#111] shadow-md rounded-[15px] overflow-hidden flex justify-center items-center">
-                          <div className="television-screen bg-[#302d30] w-[95%] h-[95%] rounded-[15px] shadow-inner overflow-hidden relative">
-                            {hoveredTV === project.id ? (
-                              <video
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                muted
-                                loop
-                              >
-                                <source src={project.video} type="video/mp4" />
-                              </video>
-                            ) : (
-                              <img
-                                src={project.image}
-                                alt={`Project ${project.id}`}
-                                className="w-full h-full object-cover"
-                              />
-                            )}
-                            <div className="noise absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_bottom,transparent,#aaa4,#8881,#6664,#4445,#2228,#4443,transparent),repeating-linear-gradient(transparent_0_2px,rgba(37,36,41,0.3)_2px_4px)] animate-scanlines"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="television-base w-[200px] h-[15px] bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-between items-center shadow-md"></div>
-                  <div className="foot-container w-[70%] flex justify-between">
-                    <div className="foot left w-5 h-2.5 bg-[#b71a11] shadow-md"></div>
-                    <div className="foot right w-5 h-2.5 bg-[#b71a11] shadow-md"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes scanlines {
-          0% {
-            background-position-y: 0, 0;
-          }
-          100% {
-            background-position-y: -221px, -150px;
-          }
-        }
-        .animate-scanlines {
-          animation: scanlines 8s linear infinite;
-        }
-      `}</style>
     </div>
   );
 };
