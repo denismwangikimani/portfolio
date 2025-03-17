@@ -4,9 +4,13 @@ import React, { useState, ReactNode } from "react";
 
 interface RetroTVProps {
   screenContent?: ReactNode;
+  tvColor?: string;
 }
 
-const RetroTV: React.FC<RetroTVProps> = ({ screenContent }) => {
+const RetroTV: React.FC<RetroTVProps> = ({
+  screenContent,
+  tvColor = "#b71a11",
+}) => {
   const [powerOn, setPowerOn] = useState(true); // Default to powered on for project display
   const [channelValue, setChannelValue] = useState(0);
   const [volumeValue, setVolumeValue] = useState(0);
@@ -28,7 +32,12 @@ const RetroTV: React.FC<RetroTVProps> = ({ screenContent }) => {
     <div className="container flex justify-center items-center mt-16">
       <div className={`tv ${powerOn ? "on" : ""}`}>
         <div className="television-container flex flex-col items-center z-[1]">
-          <div className="television w-[425px] h-[300px] rounded-[35px/45px] shadow-lg bg-gradient-to-b from-[#b71a11] to-[#88110b] flex justify-center items-center z-[2]">
+          <div
+            className="television w-[425px] h-[300px] rounded-[35px/45px] shadow-lg flex justify-center items-center z-[2]"
+            style={{
+              background: `linear-gradient(${tvColor}, ${tvColor}cc)`, // Use tvColor with gradient
+            }}
+          >
             <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner relative grid grid-cols-[3fr_1fr] grid-rows-[0.8fr] content-center gap-[3px] rounded-[25px/25px]">
               {/* Screen */}
               <div className="television-screen-container border border-[#222] shadow-md rounded-[35px/25px] m-[10px] overflow-hidden flex justify-center items-center bg-[linear-gradient(70deg,#555_15%,transparent_30%),repeating-conic-gradient(#222_0_30deg,#333_60deg,#222_90deg)]">

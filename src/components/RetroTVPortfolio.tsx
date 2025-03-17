@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import TV from "./TV"; 
+import TV from "./TV";
 
 const RetroTVPortfolio: React.FC = () => {
   const router = useRouter();
@@ -18,6 +18,8 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "top-left",
+      tvColor: "#b71a11", // Default red color
+      rotation: "",
     },
     {
       id: 2,
@@ -25,6 +27,7 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "top-right",
+      tvColor: "#1e88e5", // Blue
     },
     // Middle row (2 TVs)
     {
@@ -33,6 +36,7 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "middle-left",
+      tvColor: "#43a047", // Green
     },
     {
       id: 4,
@@ -40,6 +44,7 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "middle-right",
+      tvColor: "#ffa000", // Amber
     },
     // Bottom row (3 TVs)
     {
@@ -48,6 +53,7 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "bottom-left",
+      tvColor: "#8e24aa", // Purple
     },
     {
       id: 6,
@@ -55,6 +61,7 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "bottom-middle",
+      tvColor: "#f4511e", // Deep Orange
     },
     {
       id: 7,
@@ -62,6 +69,7 @@ const RetroTVPortfolio: React.FC = () => {
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
       position: "bottom-right",
+      tvColor: "#00897b", // Teal
     },
   ];
 
@@ -80,6 +88,9 @@ const RetroTVPortfolio: React.FC = () => {
         onMouseEnter={() => setHoveredTV(project.id)}
         onMouseLeave={() => setHoveredTV(null)}
         onClick={() => handleTVClick(project.link)}
+        style={
+          project.rotation ? { transform: `rotate(${project.rotation})` } : {}
+        }
       >
         {/* First render the TV */}
         <div className="relative">
@@ -104,6 +115,7 @@ const RetroTVPortfolio: React.FC = () => {
                 />
               )
             }
+            tvColor={project.tvColor}
           />
         </div>
       </div>
@@ -117,36 +129,36 @@ const RetroTVPortfolio: React.FC = () => {
         {/* Top row - 2 TVs */}
         <div className="flex justify-start items-end gap-0">
           {projects
-            .filter(p => p.position.startsWith("top"))
-            .map(project => (
+            .filter((p) => p.position.startsWith("top"))
+            .map((project) => (
               <div key={project.id} className="w-1/3">
                 <ProjectTV project={project} />
               </div>
             ))}
         </div>
-        
+
         {/* Middle row - 2 TVs - increased negative margin */}
-        <div 
+        <div
           className="flex justify-start items-end gap-0"
           style={{ marginTop: "-65px" }} // More negative margin
         >
           {projects
-            .filter(p => p.position.startsWith("middle"))
-            .map(project => (
+            .filter((p) => p.position.startsWith("middle"))
+            .map((project) => (
               <div key={project.id} className="w-1/3">
                 <ProjectTV project={project} />
               </div>
             ))}
         </div>
-        
+
         {/* Bottom row - 3 TVs - increased negative margin */}
-        <div 
+        <div
           className="flex justify-start items-end gap-0"
           style={{ marginTop: "-65px" }} // More negative margin
         >
           {projects
-            .filter(p => p.position.startsWith("bottom"))
-            .map(project => (
+            .filter((p) => p.position.startsWith("bottom"))
+            .map((project) => (
               <div key={project.id} className="w-1/3">
                 <ProjectTV project={project} />
               </div>
