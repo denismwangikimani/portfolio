@@ -9,59 +9,73 @@ const RetroTVPortfolio: React.FC = () => {
   const router = useRouter();
   const [hoveredTV, setHoveredTV] = useState<number | null>(null);
 
-  // Sample projects data structure
+  // Adjustable spacing values for HORIZONTAL spacing between TVs in each row
+  const secondRowSpacing = 140; // Horizontal space between TVs in the second row
+  const thirdRowSpacing = 134; // Horizontal space between TVs in the third row
+  const bottomRowSpacing = 140; // Horizontal space between TVs in the bottom row
+
+  // How much each row shifts left/right
+  const rowOffset = 90;
+
+  // Updated projects data structure with new positions
   const projects = [
-    // Top row (2 TVs)
+    // Top row (1 TV)
     {
       id: 1,
       image: "/images/profile.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
-      position: "top-left",
-      tvColor: "#b71a11", // Default red color
-      rotation: "",
+      position: "top-center",
+      tvColor: "#b71a11", // Red
+      rotation: "0deg",
     },
+    // Second row from top (2 TVs)
     {
       id: 2,
       image: "/images/profile.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
-      position: "top-right",
+      position: "second-left",
       tvColor: "#1e88e5", // Blue
+      rotation: "0deg",
     },
-    // Middle row (2 TVs)
     {
       id: 3,
       image: "/images/profile.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
-      position: "middle-left",
+      position: "second-right",
       tvColor: "#43a047", // Green
+      rotation: "0deg",
     },
+    // Third row from top (2 TVs)
     {
       id: 4,
       image: "/images/profile.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
-      position: "middle-right",
+      position: "third-left",
       tvColor: "#ffa000", // Amber
+      rotation: "0deg",
     },
-    // Bottom row (3 TVs)
     {
       id: 5,
       image: "/images/profile.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
-      position: "bottom-left",
+      position: "third-right",
       tvColor: "#8e24aa", // Purple
+      rotation: "0deg",
     },
+    // Bottom row (2 TVs)
     {
       id: 6,
       image: "/images/profile.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
       link: "/About",
-      position: "bottom-middle",
+      position: "bottom-left",
       tvColor: "#f4511e", // Deep Orange
+      rotation: "0deg",
     },
     {
       id: 7,
@@ -70,6 +84,7 @@ const RetroTVPortfolio: React.FC = () => {
       link: "/About",
       position: "bottom-right",
       tvColor: "#00897b", // Teal
+      rotation: "0deg",
     },
   ];
 
@@ -78,7 +93,6 @@ const RetroTVPortfolio: React.FC = () => {
   };
 
   // Modified TV component that handles the media content
-  // Modified ProjectTV component that better integrates media with the TV screen
   const ProjectTV: React.FC<{
     project: (typeof projects)[0];
   }> = ({ project }) => {
@@ -88,11 +102,11 @@ const RetroTVPortfolio: React.FC = () => {
         onMouseEnter={() => setHoveredTV(project.id)}
         onMouseLeave={() => setHoveredTV(null)}
         onClick={() => handleTVClick(project.link)}
-        style={
-          project.rotation ? { transform: `rotate(${project.rotation})` } : {}
-        }
+        style={{
+          transform: project.rotation ? `rotate(${project.rotation})` : "",
+        }}
       >
-        {/* First render the TV */}
+        {/* Render the TV */}
         <div className="relative">
           <TV
             screenContent={
@@ -122,47 +136,93 @@ const RetroTVPortfolio: React.FC = () => {
     );
   };
 
+  // TV container width
+  const tvWidth = 300;
+
   return (
     <div className="w-full overflow-hidden">
-      {/* Stacked TV Grid: 3-2-2 from bottom to top */}
-      <div className="grid grid-cols-1 gap-0">
-        {/* Top row - 2 TVs */}
-        <div className="flex justify-start items-end gap-0">
+      <div className="relative mx-auto" style={{ maxWidth: "1200px" }}>
+        {/* Top row - 1 TV (centered) */}
+        <div
+          className="flex justify-center"
+          style={{
+            zIndex: 40,
+            position: "relative",
+          }}
+        >
           {projects
             .filter((p) => p.position.startsWith("top"))
             .map((project) => (
-              <div key={project.id} className="w-1/3">
+              <div
+                key={project.id}
+                className="relative"
+                style={{ width: `${tvWidth}px` }}
+              >
                 <ProjectTV project={project} />
               </div>
             ))}
         </div>
 
-        {/* Middle row - 2 TVs - increased negative margin */}
+        {/* Second row - 2 TVs with adjustable spacing between them */}
         <div
-          className="flex justify-start items-end gap-0"
-          style={{ marginTop: "-65px" }} // More negative margin
+          className="flex justify-center"
+          style={{
+            marginTop: "-65px", // Adjusted for proper stacking
+            marginLeft: `${-rowOffset}px`,
+            zIndex: 30,
+            position: "relative",
+          }}
         >
-          {projects
-            .filter((p) => p.position.startsWith("middle"))
-            .map((project) => (
-              <div key={project.id} className="w-1/3">
-                <ProjectTV project={project} />
-              </div>
-            ))}
+          <div style={{ display: "flex", gap: `${secondRowSpacing}px` }}>
+            {projects
+              .filter((p) => p.position.startsWith("second"))
+              .map((project) => (
+                <div key={project.id} style={{ width: `${tvWidth}px` }}>
+                  <ProjectTV project={project} />
+                </div>
+              ))}
+          </div>
         </div>
 
-        {/* Bottom row - 3 TVs - increased negative margin */}
+        {/* Third row - 2 TVs with adjustable spacing between them */}
         <div
-          className="flex justify-start items-end gap-0"
-          style={{ marginTop: "-65px" }} // More negative margin
+          className="flex justify-center"
+          style={{
+            marginTop: "-65px", // Adjusted for proper stacking
+            marginLeft: `${rowOffset}px`,
+            zIndex: 20,
+            position: "relative",
+          }}
         >
-          {projects
-            .filter((p) => p.position.startsWith("bottom"))
-            .map((project) => (
-              <div key={project.id} className="w-1/3">
-                <ProjectTV project={project} />
-              </div>
-            ))}
+          <div style={{ display: "flex", gap: `${thirdRowSpacing}px` }}>
+            {projects
+              .filter((p) => p.position.startsWith("third"))
+              .map((project) => (
+                <div key={project.id} style={{ width: `${tvWidth}px` }}>
+                  <ProjectTV project={project} />
+                </div>
+              ))}
+          </div>
+        </div>
+
+        {/* Bottom row - 2 TVs with adjustable spacing between them */}
+        <div
+          className="flex justify-center"
+          style={{
+            marginTop: "-65px", // Adjusted for proper stacking
+            zIndex: 10,
+            position: "relative",
+          }}
+        >
+          <div style={{ display: "flex", gap: `${bottomRowSpacing}px` }}>
+            {projects
+              .filter((p) => p.position.startsWith("bottom"))
+              .map((project) => (
+                <div key={project.id} style={{ width: `${tvWidth}px` }}>
+                  <ProjectTV project={project} />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>
