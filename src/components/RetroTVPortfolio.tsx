@@ -32,18 +32,18 @@ const RetroTVPortfolio: React.FC = () => {
     // Second row from top (2 TVs)
     {
       id: 2,
-      image: "/images/profile.jpg",
+      image: "/images/xyntra-screenshots/landing_464x261.jpg",
       video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      link: "/xyntra-web-bank-app",
       position: "second-left",
       tvColor: "#1e88e5", // Blue
       rotation: "0deg",
     },
     {
       id: 3,
-      image: "/images/profile.jpg",
-      video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      image: "/images/audiojam-screenshots/landingpage_upscaled_464x259.jpg",
+      video: "/videos/Audiojam-demo-video.mp4",
+      link: "/audiojam-music",
       position: "second-right",
       tvColor: "#43a047", // Green
       rotation: "0deg",
@@ -51,18 +51,18 @@ const RetroTVPortfolio: React.FC = () => {
     // Third row from top (2 TVs)
     {
       id: 4,
-      image: "/images/profile.jpg",
-      video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      image: "/images/notesapp-screenshots/login (2)_464x261.jpg",
+      video: "/videos/bytes-notes-app-demo-video - Made with Clipchamp.mp44",
+      link: "/notesapp",
       position: "third-left",
       tvColor: "#ffa000", // Amber
       rotation: "0deg",
     },
     {
       id: 5,
-      image: "/images/profile.jpg",
-      video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      image: "/images/undead-purge-screenshots/login.png",
+      video: "/videos/undead-purge-demo-video - Made with Clipchamp.mp4",
+      link: "/undead-purge-game",
       position: "third-right",
       tvColor: "#8e24aa", // Purple
       rotation: "0deg",
@@ -79,9 +79,9 @@ const RetroTVPortfolio: React.FC = () => {
     },
     {
       id: 7,
-      image: "/images/profile.jpg",
-      video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      image: "/images/crypto-bot-screenshots/bot_464x141.jpg",
+      video: "/videos/crypto-bot-demo-video.mp4",
+      link: "/binance",
       position: "bottom-right",
       tvColor: "#00897b", // Teal
       rotation: "0deg",
