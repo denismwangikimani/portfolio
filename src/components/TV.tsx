@@ -12,35 +12,20 @@ const RetroTV: React.FC<RetroTVProps> = ({
   tvColor = "#b71a11",
 }) => {
   const [powerOn, setPowerOn] = useState(true); // Default to powered on for project display
-  const [channelValue, setChannelValue] = useState(0);
-  const [volumeValue, setVolumeValue] = useState(0);
-
-  const moveSelector = (
-    button: "channel" | "volume",
-    direction: 1 | -1,
-    event: React.MouseEvent
-  ) => {
-    event.preventDefault();
-    if (button === "channel") {
-      setChannelValue((prev) => prev + 30 * direction);
-    } else {
-      setVolumeValue((prev) => prev + 30 * direction);
-    }
-  };
 
   return (
     <div className="container flex justify-center items-center mt-16">
       <div className={`tv ${powerOn ? "on" : ""}`}>
         <div className="television-container flex flex-col items-center z-[1]">
           <div
-            className="television w-[425px] h-[300px] rounded-[35px/45px] shadow-lg flex justify-center items-center z-[2]"
+            className="television w-[425px] h-[300px] rounded-[35px/45px] shadow-lg flex justify-center items-center z-[2] relative"
             style={{
               background: `linear-gradient(${tvColor}, ${tvColor}cc)`, // Use tvColor with gradient
             }}
           >
-            <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner relative grid grid-cols-[3fr_1fr] grid-rows-[0.8fr] content-center gap-[3px] rounded-[25px/25px]">
-              {/* Screen */}
-              <div className="television-screen-container border border-[#222] shadow-md rounded-[35px/25px] m-[10px] overflow-hidden flex justify-center items-center bg-[linear-gradient(70deg,#555_15%,transparent_30%),repeating-conic-gradient(#222_0_30deg,#333_60deg,#222_90deg)]">
+            <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner relative flex content-center rounded-[25px/25px]">
+              {/* Screen - takes the full width */}
+              <div className="television-screen-container border border-[#222] shadow-md rounded-[35px/25px] m-[10px] overflow-hidden flex justify-center items-center bg-[linear-gradient(70deg,#555_15%,transparent_30%),repeating-conic-gradient(#222_0_30deg,#333_60deg,#222_90deg)] w-full">
                 <div className="television-crt w-[99%] h-[95%] bg-[#111] shadow-md rounded-[85px/100px] overflow-hidden flex justify-center items-center">
                   <div className="television-screen bg-[#302d30] w-[95%] h-[95%] rounded-[30%] shadow-inner overflow-hidden relative">
                     {/* TV Screen Content - now using provided content */}
@@ -69,93 +54,18 @@ const RetroTV: React.FC<RetroTVProps> = ({
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Controls - rest of TV component remains the same */}
-              <div className="television-lateral grid grid-rows-[1.1fr_1fr] gap-[12px] my-[15px] ml-0">
-                {/* ...existing controls code... */}
-                <div className="dial-container border-2 border-[#333] border-l-[#444] border-b-[#444] rounded-[5px] shadow-md flex flex-col justify-center gap-[6px] items-center">
-                  {/* Channel Button */}
-                  <div
-                    className="dial channel-button w-[42px] h-[42px] border-2 border-[#6e706f] rounded-full shadow-md flex justify-center items-center relative cursor-pointer bg-black"
-                    onClick={(e) => moveSelector("channel", 1, e)}
-                    onContextMenu={(e) => moveSelector("channel", -1, e)}
-                  >
-                    <div className="data-container flex justify-center w-full h-full">
-                      {Array(12)
-                        .fill(0)
-                        .map((_, i) => (
-                          <div
-                            key={`channel-${i}`}
-                            className="data text-[#888] text-[6px] shadow-sm absolute top-0 h-full"
-                            style={{
-                              transform: `rotate(${i * 30}deg)`,
-                              transformOrigin: "50% 50%",
-                            }}
-                          >
-                            #
-                          </div>
-                        ))}
-                    </div>
-                    <div className="dial-core w-[28px] h-[28px] rounded-full bg-[conic-gradient(#eee_0deg_45deg,#666_70deg_285deg,#eee_320deg)] absolute"></div>
-                    <div
-                      className="selector absolute w-[75%] h-1 bg-gradient-to-b from-[#666] to-[#aaa] border border-[#666] rounded"
-                      style={{ transform: `rotate(${channelValue - 90}deg)` }}
-                    ></div>
-                  </div>
-
-                  {/* Volume Button */}
-                  <div
-                    className="dial volume-button w-[42px] h-[42px] border-2 border-[#6e706f] rounded-full shadow-md flex justify-center items-center relative cursor-pointer bg-[#ccc]"
-                    onClick={(e) => moveSelector("volume", 1, e)}
-                    onContextMenu={(e) => moveSelector("volume", -1, e)}
-                  >
-                    <div className="data-container flex justify-center w-full h-full">
-                      {Array(12)
-                        .fill(0)
-                        .map((_, i) => (
-                          <div
-                            key={`volume-${i}`}
-                            className="data text-[#444] text-[6px] shadow-sm absolute top-0 h-full"
-                            style={{
-                              transform: `rotate(${i * 30}deg)`,
-                              transformOrigin: "50% 50%",
-                            }}
-                          >
-                            #
-                          </div>
-                        ))}
-                    </div>
-                    <div className="dial-core w-[28px] h-[28px] rounded-full bg-[conic-gradient(#eee_0deg_45deg,#666_70deg_285deg,#eee_320deg)] absolute"></div>
-                    <div
-                      className="selector absolute w-[75%] h-1 bg-gradient-to-b from-[#666] to-[#aaa] border border-[#666] rounded"
-                      style={{ transform: `rotate(${volumeValue - 90}deg)` }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="speaker-container grid grid-cols-6 gap-[1px_0] mb-[12px] mx-[2px]">
-                  {Array(48)
-                    .fill(0)
-                    .map((_, i) => (
-                      <div
-                        key={i}
-                        className="w-[10px] h-[10px] bg-[radial-gradient(#000,#222)] rounded-full border-b border-white"
-                      ></div>
-                    ))}
-                </div>
-              </div>
-
-              {/* Buttons */}
-              <div className="buttons absolute bottom-[5px] right-[30px] w-[60px] flex justify-between">
-                <div className="button-container w-[20px] h-[20px] bg-gradient-to-b from-white via-[#aaa] to-[#666] rounded-full flex justify-center items-center">
-                  <div className="button w-[10px] h-[10px] rounded-full bg-gradient-to-t from-white via-[#aaa] to-[#666] shadow-md transform translate-x-0.5 translate-y-0.5 cursor-pointer active:translate-x-0 active:translate-y-0 active:shadow"></div>
-                </div>
-                <div className="button-container w-[20px] h-[20px] bg-gradient-to-b from-white via-[#aaa] to-[#666] rounded-full flex justify-center items-center">
-                  <div
-                    className="button w-[10px] h-[10px] rounded-full bg-gradient-to-t from-white via-[#aaa] to-[#666] shadow-md transform translate-x-0.5 translate-y-0.5 cursor-pointer active:translate-x-0 active:translate-y-0 active:shadow"
-                    onClick={() => setPowerOn(!powerOn)}
-                  ></div>
-                </div>
+            {/* Power Button - positioned on the bottom edge of the TV frame */}
+            <div
+              className="power-button w-[16px] h-[16px] absolute bottom-[8px] right-[32px] z-10"
+              style={{ transform: "translateY(50%)" }}
+            >
+              <div
+                className="button-outer w-full h-full bg-[#333] rounded-full shadow-md cursor-pointer border border-[#444] flex items-center justify-center"
+                onClick={() => setPowerOn(!powerOn)}
+              >
+                <div className="button-inner w-[10px] h-[10px] rounded-full bg-gradient-to-t from-[#f6f6f6] to-[#999] shadow-inner"></div>
               </div>
             </div>
           </div>
