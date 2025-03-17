@@ -1,15 +1,14 @@
 "use client";
 
 import React from "react";
-//import Navbar from "@/components/Navbar";
-//import Footer from "@/components/Footer";
+import Blog from "@/components/Blog";
 
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-black text-white">
-      <main className="container mx-auto px-4 md:px-6 lg:px-8 max-w-3xl py-16 md:py-24">
+      <main className="container mx-auto px-4 md:px-6 lg:px-8 max-w-5xl py-16">
         <div className="space-y-12">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-16">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-8">
             Hello
           </h1>
 
@@ -52,6 +51,11 @@ const AboutPage = () => {
                 <span>Python</span>
               </li>
             </ul>
+          </div>
+
+          {/* Blog Section with ID for navigation */}
+          <div id="blog">
+            <Blog />
           </div>
         </div>
       </main>
