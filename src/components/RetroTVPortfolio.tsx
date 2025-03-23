@@ -22,9 +22,9 @@ const RetroTVPortfolio: React.FC = () => {
     // Top row (1 TV)
     {
       id: 1,
-      image: "/images/profile.jpg",
-      video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      image: "/images/online-store-screenshots/store-landing.png",
+      video: "/videos/store-demo.mp4",
+      link: "/store",
       position: "top-center",
       tvColor: "#b71a11", // Red
       rotation: "0deg",
@@ -70,9 +70,9 @@ const RetroTVPortfolio: React.FC = () => {
     // Bottom row (2 TVs)
     {
       id: 6,
-      image: "/images/profile.jpg",
-      video: "/videos/xyntra-web-bank-demo-video.mp4",
-      link: "/About",
+      image: "/images/menu-planner-screenshots/dashboard.png",
+      video: "/videos/menu-demo.mp4",
+      link: "/menu-scheduling",
       position: "bottom-left",
       tvColor: "#f4511e", // Deep Orange
       rotation: "0deg",
