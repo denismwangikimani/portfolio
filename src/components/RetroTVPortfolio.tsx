@@ -10,12 +10,12 @@ const RetroTVPortfolio: React.FC = () => {
   const [hoveredTV, setHoveredTV] = useState<number | null>(null);
 
   // Adjustable spacing values for HORIZONTAL spacing between TVs in each row
-  const secondRowSpacing = 140; // Horizontal space between TVs in the second row
-  const thirdRowSpacing = 134; // Horizontal space between TVs in the third row
-  const bottomRowSpacing = 140; // Horizontal space between TVs in the bottom row
+  // const secondRowSpacing = 140; // Horizontal space between TVs in the second row
+  // const thirdRowSpacing = 134; // Horizontal space between TVs in the third row
+  // const bottomRowSpacing = 140; // Horizontal space between TVs in the bottom row
 
-  // How much each row shifts left/right
-  const rowOffset = 90;
+  // // How much each row shifts left/right
+  // const rowOffset = 90;
 
   // Updated projects data structure with new positions
   const projects = [
@@ -52,7 +52,7 @@ const RetroTVPortfolio: React.FC = () => {
     {
       id: 4,
       image: "/images/notesapp-screenshots/login (2)_464x261.jpg",
-      video: "/videos/bytes-notes-app-demo-video - Made with Clipchamp.mp44",
+      video: "/videos/bytes-notes-app-demo-video - Made with Clipchamp.mp4",
       link: "/notesapp",
       position: "third-left",
       tvColor: "#ffa000", // Amber
@@ -106,7 +106,6 @@ const RetroTVPortfolio: React.FC = () => {
           transform: project.rotation ? `rotate(${project.rotation})` : "",
         }}
       >
-        {/* Render the TV */}
         <div className="relative">
           <TV
             screenContent={
@@ -136,96 +135,109 @@ const RetroTVPortfolio: React.FC = () => {
     );
   };
 
-  // TV container width
-  const tvWidth = 300;
+  // Single-column layout for mobile
+  const MobileLayout = () => (
+    <div className="block md:hidden px-4 space-y-8">
+      {projects.map((p) => (
+        <div key={p.id} className="mx-auto max-w-sm">
+          <ProjectTV project={p} />
+        </div>
+      ))}
+    </div>
+  );
 
-  return (
-    <div className="w-full overflow-hidden">
-      <div className="relative mx-auto" style={{ maxWidth: "1200px" }}>
-        {/* Top row - 1 TV (centered) */}
-        <div
-          className="flex justify-center"
-          style={{
-            zIndex: 40,
-            position: "relative",
-          }}
-        >
+  // Existing staggered layout for larger screens
+  const DesktopLayout = () => {
+    // TV container width
+    const tvWidth = 300;
+
+    return (
+      <div className="relative mx-auto max-w-[1200px] hidden md:block">
+        {/* Top Row */}
+        <div className="flex justify-center relative z-[40]">
           {projects
             .filter((p) => p.position.startsWith("top"))
-            .map((project) => (
+            .map((p) => (
               <div
-                key={project.id}
+                key={p.id}
                 className="relative"
                 style={{ width: `${tvWidth}px` }}
               >
-                <ProjectTV project={project} />
+                <ProjectTV project={p} />
               </div>
             ))}
         </div>
 
-        {/* Second row - 2 TVs with adjustable spacing between them */}
+        {/* Second Row */}
         <div
-          className="flex justify-center"
+          className="flex justify-center relative z-[30]"
           style={{
-            marginTop: "-65px", // Adjusted for proper stacking
-            marginLeft: `${-rowOffset}px`,
-            zIndex: 30,
-            position: "relative",
+            marginTop: "-65px",
+            marginLeft: `-${90}px`, // rowOffset
           }}
         >
-          <div style={{ display: "flex", gap: `${secondRowSpacing}px` }}>
+          <div
+            style={{ display: "flex", gap: `${140}px` /* secondRowSpacing */ }}
+          >
             {projects
               .filter((p) => p.position.startsWith("second"))
-              .map((project) => (
-                <div key={project.id} style={{ width: `${tvWidth}px` }}>
-                  <ProjectTV project={project} />
+              .map((p) => (
+                <div key={p.id} style={{ width: `${tvWidth}px` }}>
+                  <ProjectTV project={p} />
                 </div>
               ))}
           </div>
         </div>
 
-        {/* Third row - 2 TVs with adjustable spacing between them */}
+        {/* Third Row */}
         <div
-          className="flex justify-center"
+          className="flex justify-center relative z-[20]"
           style={{
-            marginTop: "-65px", // Adjusted for proper stacking
-            marginLeft: `${rowOffset}px`,
-            zIndex: 20,
-            position: "relative",
+            marginTop: "-65px",
+            marginLeft: `${90}px`, // rowOffset
           }}
         >
-          <div style={{ display: "flex", gap: `${thirdRowSpacing}px` }}>
+          <div
+            style={{ display: "flex", gap: `${134}px` /* thirdRowSpacing */ }}
+          >
             {projects
               .filter((p) => p.position.startsWith("third"))
-              .map((project) => (
-                <div key={project.id} style={{ width: `${tvWidth}px` }}>
-                  <ProjectTV project={project} />
+              .map((p) => (
+                <div key={p.id} style={{ width: `${tvWidth}px` }}>
+                  <ProjectTV project={p} />
                 </div>
               ))}
           </div>
         </div>
 
-        {/* Bottom row - 2 TVs with adjustable spacing between them */}
+        {/* Bottom Row */}
         <div
-          className="flex justify-center"
+          className="flex justify-center relative z-[10]"
           style={{
-            marginTop: "-65px", // Adjusted for proper stacking
-            zIndex: 10,
-            position: "relative",
+            marginTop: "-65px",
           }}
         >
-          <div style={{ display: "flex", gap: `${bottomRowSpacing}px` }}>
+          <div
+            style={{ display: "flex", gap: `${140}px` /* bottomRowSpacing */ }}
+          >
             {projects
               .filter((p) => p.position.startsWith("bottom"))
-              .map((project) => (
-                <div key={project.id} style={{ width: `${tvWidth}px` }}>
-                  <ProjectTV project={project} />
+              .map((p) => (
+                <div key={p.id} style={{ width: `${tvWidth}px` }}>
+                  <ProjectTV project={p} />
                 </div>
               ))}
           </div>
         </div>
       </div>
-    </div>
+    );
+  };
+
+  return (
+    <>
+      <MobileLayout />
+      <DesktopLayout />
+    </>
   );
 };
 
