@@ -111,7 +111,7 @@ const RetroTVPortfolio: React.FC = () => {
             screenContent={
               hoveredTV === project.id ? (
                 <video
-                  className="w-full h-full object-cover rounded-[25px]"
+                  className="w-full h-full object-contain rounded-[25px]"
                   autoPlay
                   muted
                   loop
@@ -123,7 +123,7 @@ const RetroTVPortfolio: React.FC = () => {
                   src={project.image}
                   alt={`Project ${project.id}`}
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="contain"
                   className="rounded-[25px]"
                 />
               )
