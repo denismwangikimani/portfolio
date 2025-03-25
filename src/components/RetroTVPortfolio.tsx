@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import TV from "./TV";
@@ -8,6 +8,8 @@ import TV from "./TV";
 const RetroTVPortfolio: React.FC = () => {
   const router = useRouter();
   const [hoveredTV, setHoveredTV] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  // Removed unused inViewport state
 
   const projects = [
     {
@@ -61,6 +63,68 @@ const RetroTVPortfolio: React.FC = () => {
     },
   ];
 
+  // Set up intersection observer for the entire tv section
+  useEffect(() => {
+    if (typeof window === "undefined" || !sectionRef.current) return;
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        // Add/remove scroll-snap class to body when entering/exiting Work section
+        if (entry.isIntersecting) {
+          document.body.classList.add("in-tv-section");
+        } else {
+          document.body.classList.remove("in-tv-section");
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    sectionObserver.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) {
+        sectionObserver.unobserve(sectionRef.current);
+      }
+      document.body.classList.remove("in-tv-section");
+    };
+  }, []);
+
+  // Set up observers for individual TV sections
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("tv-active");
+          } else {
+            entry.target.classList.remove("tv-active");
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-10% 0px",
+        threshold: 0.3,
+      }
+    );
+
+    const tvSections = document.querySelectorAll(".tv-section");
+    tvSections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      tvSections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   const handleTVClick = (link: string) => {
     router.push(link);
   };
@@ -69,7 +133,7 @@ const RetroTVPortfolio: React.FC = () => {
     project,
   }) => (
     <div
-      className="relative cursor-pointer"
+      className="relative cursor-pointer transform transition-transform duration-500 hover:scale-105"
       onMouseEnter={() => setHoveredTV(project.id)}
       onMouseLeave={() => setHoveredTV(null)}
       onClick={() => handleTVClick(project.link)}
@@ -101,18 +165,46 @@ const RetroTVPortfolio: React.FC = () => {
   );
 
   return (
-    <div className="w-full">
+    <div ref={sectionRef} className="tv-portfolio-section">
       {projects.map((p) => (
         <div
           key={p.id}
-          className="min-h-screen flex items-center justify-center"
+          className="tv-section min-h-screen w-full flex items-center justify-center transform transition-all duration-700 opacity-0 translate-y-20"
+          data-tv-id={p.id}
         >
-          {/* Scale up 30% on large screens */}
           <div className="w-full max-w-[500px] transform lg:scale-[1.6] transition-transform">
             <ProjectTV project={p} />
           </div>
         </div>
       ))}
+
+      <style jsx global>{`
+        /* Base scroll styles */
+        html {
+          scroll-behavior: smooth;
+        }
+
+        /* Applied only when in TV section */
+        body.in-tv-section {
+          scroll-snap-type: y mandatory;
+        }
+
+        /* TV section specific styles */
+        .tv-section {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        }
+
+        .tv-active {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+
+        /* Make sure the footer doesn't snap */
+        #footer {
+          scroll-snap-align: none;
+        }
+      `}</style>
     </div>
   );
 };
