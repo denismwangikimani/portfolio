@@ -17,12 +17,26 @@ const RetroTV: React.FC<RetroTVProps> = ({
     <div className="container flex justify-center items-center mt-16">
       <div className={`tv ${powerOn ? "on" : ""}`}>
         <div className="television-container flex flex-col items-center z-[1]">
+          {/* Antenna - removed mb-2 to eliminate the gap */}
+          <div className="antenna-container w-[235px] h-[60px] flex flex-col justify-end">
+            <div
+              className="antenna w-full h-[4px] z-0 flex items-center"
+              style={{
+                background: `linear-gradient(to right, ${tvColor}, ${tvColor}cc)`,
+                transformOrigin: "100% 50%",
+                transform: "rotate(20deg) translateY(3px)",
+              }}
+            ></div>
+          </div>
+
           <div
             className="television w-[425px] h-[300px] rounded-[35px/45px] shadow-lg flex justify-center items-center z-[2] relative"
             style={{
               background: `linear-gradient(${tvColor}, ${tvColor}cc)`, // Use tvColor with gradient
+              marginTop: "-2px", // Add negative margin to connect with antenna
             }}
           >
+            {/* Rest of TV code remains the same */}
             <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner relative flex content-center rounded-[25px/25px]">
               {/* Screen - takes the full width */}
               <div className="television-screen-container border border-[#222] shadow-md rounded-[35px/25px] m-[10px] overflow-hidden flex justify-center items-center bg-[linear-gradient(70deg,#555_15%,transparent_30%),repeating-conic-gradient(#222_0_30deg,#333_60deg,#222_90deg)] w-full">
@@ -68,6 +82,44 @@ const RetroTV: React.FC<RetroTVProps> = ({
                 <div className="button-inner w-[10px] h-[10px] rounded-full bg-gradient-to-t from-[#f6f6f6] to-[#999] shadow-inner"></div>
               </div>
             </div>
+          </div>
+
+          {/* TV Base */}
+          <div
+            className="television-base w-[350px] h-[25px] flex justify-between items-center shadow-md relative"
+            style={{
+              background: `linear-gradient(to bottom, ${tvColor}, ${tvColor}dd)`,
+            }}
+          >
+            <div className="slots w-1/2 h-[15px] flex justify-center">
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+            </div>
+            <div className="slots w-1/2 h-[15px] flex justify-center">
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+              <div className="slot w-1 h-full bg-[#0b0000] ml-[3px] rounded-sm"></div>
+            </div>
+          </div>
+
+          {/* TV Feet */}
+          <div className="foot-container w-[70%] flex justify-between">
+            <div
+              className="foot left w-5 h-2.5 shadow-md"
+              style={{
+                background: tvColor,
+              }}
+            ></div>
+            <div
+              className="foot right w-5 h-2.5 shadow-md"
+              style={{
+                background: tvColor,
+              }}
+            ></div>
           </div>
         </div>
       </div>
