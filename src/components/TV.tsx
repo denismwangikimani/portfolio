@@ -39,10 +39,10 @@ const RetroTV: React.FC<RetroTVProps> = ({
             {/* Rest of TV code remains the same */}
             <div className="television-inner w-[93%] h-[90%] bg-gradient-to-b from-[#454c45] via-[#232522] to-[#232522] border-b border-white shadow-inner relative flex content-center rounded-[25px/25px]">
               {/* Screen - takes the full width */}
-              <div className="television-screen-container border border-[#222] shadow-md rounded-[15px/15px] m-[10px] overflow-hidden flex justify-center items-center bg-[linear-gradient(70deg,#555_15%,transparent_30%),repeating-conic-gradient(#222_0_30deg,#333_60deg,#222_90deg)] w-full">
-                <div className="television-crt w-[99%] h-[95%] bg-[#111] shadow-md rounded-[15px] overflow-hidden flex justify-center items-center">
-                  <div className="television-screen bg-[#302d30] w-full h-full rounded-[10px] shadow-inner overflow-hidden relative">
-                    {/* TV Screen Content - now using provided content */}
+              <div className="television-screen-container border border-[#222] shadow-md rounded-[5px] m-[10px] overflow-hidden flex justify-center items-center bg-[#111] w-full">
+                <div className="television-crt w-[99%] h-[98%] bg-[#111] overflow-hidden flex justify-center items-center">
+                  <div className="television-screen bg-black w-full h-full overflow-hidden relative">
+                    {/* TV Screen Content - content will be fully visible with no overlays */}
                     <div className="absolute inset-0 flex justify-center items-center z-[1]">
                       {screenContent || (
                         <div className="logo-container flex justify-center items-center">
@@ -56,12 +56,9 @@ const RetroTV: React.FC<RetroTVProps> = ({
                       )}
                     </div>
 
-                    {/* TV Effects - kept on top of content but with reduced opacity */}
-                    <div className="noise w-full h-full bg-[linear-gradient(to_bottom,transparent,#aaa2,#8881,#6662,#4442,#2222,#4442,transparent),repeating-linear-gradient(transparent_0_2px,rgba(37,36,41,0.15)_2px_4px)] animate-scanlines absolute inset-0 z-[4] pointer-events-none"></div>
-
-                    {/* Power Off Overlay */}
+                    {/* Power Off Overlay - keeping this for functionality but removing all other effects */}
                     <div
-                      className={`off w-full h-full bg-[radial-gradient(#222,#1a1a1a,#111)] absolute top-0 transition-opacity duration-500 z-[5] ${
+                      className={`off w-full h-full bg-[#000] absolute top-0 transition-opacity duration-500 z-[5] ${
                         powerOn ? "opacity-0" : "opacity-100"
                       }`}
                     ></div>
