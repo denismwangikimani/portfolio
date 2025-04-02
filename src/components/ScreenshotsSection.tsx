@@ -18,7 +18,7 @@ const ScreenShotsSection: React.FC<ScreenShotsSectionProps> = ({
       <h2 className="text-2xl md:text-3xl font-semibold">
         Project Screenshots
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="flex flex-col space-y-6">
         {screenshots.map((screenshot, index) => (
           <div
             key={index}

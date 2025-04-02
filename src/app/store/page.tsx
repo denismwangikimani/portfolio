@@ -81,7 +81,7 @@ const OnlineStorePage: React.FC = () => {
         {/* Call to Action */}
         <section className="space-y-6 mb-16 text-center">
           <a
-            href="https://house-of-kimani.vercel.app"
+            href="https://houseofkimani.netlify.app/"
             className="text-blue-600 hover:underline text-lg"
             target="_blank"
             rel="noopener noreferrer"
