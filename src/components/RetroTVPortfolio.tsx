@@ -28,18 +28,19 @@ const RetroTVPortfolio: React.FC = () => {
     },
     {
       id: 3,
+      image: "/images/notesapp-screenshots/landing.png",
+      video: "/videos/bytes-notes-app-demo-video - Made with Clipchamp.mp4",
+      link: "/notesapp",
+      tvColor: "#fbc02d",
+    },
+    {
+      id: 4,
       image: "/images/audiojam-screenshots/landingpage_upscaled_464x259.jpg",
       video: "/videos/Audiojam-demo-video.mp4",
       link: "/audiojam-music",
       tvColor: "#43a047",
     },
-    {
-      id: 4,
-      image: "/images/notesapp-screenshots/login (2)_464x261.jpg",
-      video: "/videos/bytes-notes-app-demo-video - Made with Clipchamp.mp4",
-      link: "/notesapp",
-      tvColor: "#ffa000",
-    },
+
     {
       id: 5,
       image: "/images/undead-purge-screenshots/login.png",

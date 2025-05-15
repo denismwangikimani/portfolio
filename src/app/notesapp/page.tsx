@@ -16,7 +16,7 @@ const notesScreenshots: Screenshot[] = [
     alt: "Screenshot 1",
   },
   { src: "/images/notesapp-screenshots/signup.png", alt: "Screenshot 2" },
-  { src: "/images/notesapp-screenshots/heart.png", alt: "Screenshot 3" },
+  { src: "/images/notesapp-screenshots/heartnotes.png", alt: "Screenshot 3" },
   { src: "/images/notesapp-screenshots/flashcards.png", alt: "Screenshot 4" },
   { src: "/images/notesapp-screenshots/governance.png", alt: "Screenshot 5" },
   { src: "/images/notesapp-screenshots/filesidebar.png", alt: "Screenshot 6" },
