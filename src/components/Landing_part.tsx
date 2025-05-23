@@ -85,7 +85,7 @@ const PersonalTagCard: React.FC = () => {
         {/* Top Text */}
         <div className="flex justify-between text-xs text-white mt-4">
           <span>Kenyan</span>
-          <span>21 yrs</span>
+          {/* <span>21 yrs</span> */}
         </div>
 
         {/* Main content */}
