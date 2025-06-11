@@ -182,10 +182,10 @@ const NotesPage: React.FC = () => {
         {/* Navigation to Next Project */}
         <section className="text-center">
           <a
-            href="/xyntra-web-bank-app"
+            href="/audiojam-music"
             className="text-blue-600 hover:underline text-lg"
           >
-            Next Project: Xyntra Web Bank App
+            Next Project: Spotify Audiojam
           </a>
         </section>
       </main>

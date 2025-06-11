@@ -146,8 +146,8 @@ const AudioJamPage: React.FC = () => {
 
         {/* Navigation to Next Project */}
         <section className="text-center">
-          <a href="/notesapp" className="text-blue-600 hover:underline text-lg">
-            Next Project: Byte Notes App
+          <a href="/menu-scheduling" className="text-blue-600 hover:underline text-lg">
+            Next Project: Menu Scheduling App
           </a>
         </section>
       </main>

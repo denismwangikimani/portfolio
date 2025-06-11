@@ -40,20 +40,19 @@ const RetroTVPortfolio: React.FC = () => {
       link: "/audiojam-music",
       tvColor: "#43a047",
     },
-
     {
       id: 5,
-      image: "/images/undead-purge-screenshots/login.png",
-      video: "/videos/undead-purge-demo-video - Made with Clipchamp.mp4",
-      link: "/undead-purge-game",
-      tvColor: "#8e24aa",
-    },
-    {
-      id: 6,
       image: "/images/menu-planner-screenshots/dashboard.png",
       video: "/videos/menu-demo.mp4",
       link: "/menu-scheduling",
       tvColor: "#f4511e",
+    },
+    {
+      id: 6,
+      image: "/images/undead-purge-screenshots/login.png",
+      video: "/videos/undead-purge-demo-video - Made with Clipchamp.mp4",
+      link: "/undead-purge-game",
+      tvColor: "#8e24aa",
     },
     {
       id: 7,

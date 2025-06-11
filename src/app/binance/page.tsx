@@ -11,7 +11,10 @@ interface Screenshot {
 }
 
 const binanceScreenshots: Screenshot[] = [
-  { src: "/images/crypto-bot-screenshots/bot_464x141.jpg", alt: "Screenshot 1" },
+  {
+    src: "/images/crypto-bot-screenshots/bot_464x141.jpg",
+    alt: "Screenshot 1",
+  },
 ];
 
 const BinancePage: React.FC = () => {
@@ -115,7 +118,8 @@ const BinancePage: React.FC = () => {
           <div
             className="w-full rounded-lg flex items-center justify-center"
             style={{
-              backgroundImage: "url('/images/crypto-bot-screenshots/crypto_bot_chart_flow.png')",
+              backgroundImage:
+                "url('/images/crypto-bot-screenshots/crypto_bot_chart_flow.png')",
               backgroundSize: "contain",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -180,11 +184,8 @@ const BinancePage: React.FC = () => {
 
         {/* Navigation to Next Project */}
         <section className="text-center">
-          <a
-            href="/undead-purge-game"
-            className="text-blue-600 hover:underline text-lg"
-          >
-            Next Project: Undead Purge Game
+          <a href="/Store" className="text-blue-600 hover:underline text-lg">
+            Next Project: HouseOfKimani E-commerce Store With Admin Panel
           </a>
         </section>
       </main>

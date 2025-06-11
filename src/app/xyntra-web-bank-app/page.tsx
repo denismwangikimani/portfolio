@@ -145,10 +145,10 @@ const XyntraWebBankPage: React.FC = () => {
         {/* Navigation to Next Project */}
         <section className="text-center">
           <a
-            href="/audiojam-music"
+            href="/notesapp"
             className="text-blue-600 hover:underline text-lg"
           >
-            Next Project: AudioJam Spotify Project
+            Next Project: Notesapp
           </a>
         </section>
       </main>
