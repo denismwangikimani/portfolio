@@ -269,7 +269,7 @@ const OnlineStorePage: React.FC = () => {
         {/* Navigation to Next Project */}
         <section className="text-center">
           <a
-            href="/xyntra-web-bank"
+            href="/xyntra-web-bank-app"
             className="text-blue-600 hover:underline text-lg"
           >
             Next Project: Xyntra web bank App

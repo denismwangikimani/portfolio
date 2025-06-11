@@ -184,7 +184,7 @@ const BinancePage: React.FC = () => {
 
         {/* Navigation to Next Project */}
         <section className="text-center">
-          <a href="/Store" className="text-blue-600 hover:underline text-lg">
+          <a href="/store" className="text-blue-600 hover:underline text-lg">
             Next Project: HouseOfKimani E-commerce Store With Admin Panel
           </a>
         </section>
